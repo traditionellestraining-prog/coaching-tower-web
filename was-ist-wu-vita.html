@@ -1,0 +1,484 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Was ist Wu-Vita? – Das Konzept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-deep:#1c3026;--green-darker:#142219;--green-mid:#2d4a3a;
+  --charcoal:#26282a;--charcoal-soft:#2f3133;
+  --gold:#c9a55c;--gold-bright:#e0c281;--gold-deep:#a07d3e;
+  --cream:#f3ede0;--cream-dim:#cfc8b8;--ink:#0f1813;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--green-darker);color:var(--cream);font-family:'Inter',sans-serif;font-weight:300;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.1;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+.eyebrow{font-family:'Inter',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:inline-block;}
+.gold-line{width:60px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:1.4rem 0;}
+.reveal{animation:fadeUp .8s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+
+/* ── HEADER ─────────────────────────────────────────── */
+header{position:fixed;top:0;left:0;right:0;z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 40px;transition:background .4s,padding .4s;}
+header.scrolled{background:rgba(20,34,25,.92);backdrop-filter:blur(14px);padding:12px 40px;border-bottom:1px solid rgba(201,165,92,.15);}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;justify-self:start;}
+.brand-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold);letter-spacing:.02em;}
+nav{display:flex;gap:34px;align-items:center;justify-self:center;}
+nav a{color:var(--cream-dim);text-decoration:none;font-size:.86rem;font-weight:400;letter-spacing:.03em;transition:color .3s;}
+nav a:hover,nav a.active{color:var(--gold-bright);}
+.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:9px 22px;border-radius:2px;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:all .35s;}
+.nav-cta:hover{background:var(--gold);color:var(--ink);}
+.header-right{display:flex;align-items:center;gap:12px;justify-self:end;}
+.lang-switch{display:flex;gap:6px;}
+.lang-btn{background:none;border:1px solid rgba(201,165,92,.35);color:var(--cream-dim);font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.1em;padding:4px 10px;border-radius:2px;cursor:pointer;transition:all .3s;}
+.lang-btn:hover{border-color:var(--gold);color:var(--gold);}
+.lang-btn.active{background:var(--gold);border-color:var(--gold);color:var(--ink);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;}
+.burger span{width:26px;height:2px;background:var(--gold);transition:.3s;}
+
+/* ── HERO ────────────────────────────────────────────── */
+.hero{
+  padding:160px 0 90px;
+  text-align:center;
+  border-bottom:1px solid rgba(201,165,92,.12);
+  background:radial-gradient(ellipse at 50% 0%, rgba(201,165,92,.06) 0%, transparent 68%);
+}
+.hero h1{font-size:clamp(3rem,7vw,5.2rem);color:var(--cream);}
+.hero h1 em{color:var(--gold);font-style:italic;}
+.hero .lead{margin:1.2rem auto 0;font-size:1.08rem;color:var(--cream-dim);max-width:580px;line-height:1.8;}
+
+/* ── PROBLEM SECTION ─────────────────────────────────── */
+.problem{padding:100px 0;border-bottom:1px solid rgba(201,165,92,.1);}
+.problem-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+.problem-left{}
+.problem-left h2{font-size:clamp(2rem,4vw,3rem);margin:.6rem 0 1.6rem;}
+.problem-left h2 em{color:var(--gold);font-style:italic;}
+.problem-left p{color:var(--cream-dim);font-size:.97rem;margin-bottom:1.1rem;}
+.problem-right{}
+.callout{
+  background:rgba(201,165,92,.07);
+  border-left:2px solid var(--gold);
+  padding:28px 32px;
+  border-radius:0 4px 4px 0;
+  margin-bottom:24px;
+}
+.callout .callout-title{
+  font-family:'Inter',sans-serif;font-weight:700;font-size:.72rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;
+}
+.callout p{font-size:.93rem;color:var(--cream-dim);line-height:1.75;}
+.callout p strong{color:var(--cream);}
+
+/* ── EBENEN INTRO ────────────────────────────────────── */
+.ebenen-intro{
+  padding:90px 0 60px;
+  text-align:center;
+  border-bottom:1px solid rgba(201,165,92,.1);
+  background:linear-gradient(180deg, var(--green-darker) 0%, var(--green-deep) 100%);
+}
+.ebenen-intro h2{font-size:clamp(2rem,4.5vw,3.4rem);color:var(--cream);margin:.6rem 0 1.4rem;}
+.ebenen-intro h2 em{color:var(--gold);font-style:italic;}
+.ebenen-intro .sub{font-size:.97rem;color:var(--cream-dim);max-width:680px;margin:0 auto 56px;}
+
+/* outside→inside arrow */
+.direction-bar{
+  display:flex;align-items:center;justify-content:center;gap:0;
+  max-width:780px;margin:0 auto;
+}
+.dir-label{
+  flex:1;padding:14px 20px;text-align:center;
+  font-family:'Inter',sans-serif;font-size:.75rem;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  background:rgba(201,165,92,.1);border:1px solid rgba(201,165,92,.25);
+}
+.dir-label.left{border-radius:4px 0 0 4px;}
+.dir-label.right{border-radius:0 4px 4px 0;background:rgba(201,165,92,.18);color:var(--gold);}
+.dir-arrow{
+  background:rgba(201,165,92,.15);border-top:1px solid rgba(201,165,92,.25);border-bottom:1px solid rgba(201,165,92,.25);
+  padding:14px 28px;font-size:1.1rem;color:var(--gold);
+}
+
+/* ── EBENE BLOCKS ────────────────────────────────────── */
+.ebene{
+  padding:90px 0;
+  border-bottom:1px solid rgba(201,165,92,.1);
+}
+.ebene:nth-child(even){background:rgba(28,48,38,.35);}
+.ebene-inner{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:72px;
+  align-items:start;
+}
+.ebene-inner.reverse{grid-template-columns:1fr 280px;}
+.ebene-inner.reverse .ebene-label{order:2;}
+.ebene-inner.reverse .ebene-body{order:1;}
+
+/* left label column */
+.ebene-label{
+  position:sticky;top:120px;
+  display:flex;flex-direction:column;
+  align-items:flex-start;gap:16px;
+}
+.ebene-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:5.5rem;font-weight:700;
+  color:rgba(201,165,92,.15);line-height:1;
+  margin-bottom:-10px;
+}
+.ebene-zh{
+  font-family:'Noto Serif SC',serif;
+  font-size:3.8rem;color:rgba(201,165,92,.35);
+  line-height:1;
+}
+.ebene-tag{
+  font-family:'Inter',sans-serif;font-size:.68rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(201,165,92,.4);
+  padding:5px 12px;border-radius:2px;
+}
+.ebene-type{font-size:.8rem;color:var(--cream-dim);font-style:italic;}
+
+/* right body column */
+.ebene-body h3{
+  font-size:clamp(1.7rem,3vw,2.4rem);
+  color:var(--cream);margin-bottom:6px;
+}
+.ebene-body h3 em{color:var(--gold);font-style:italic;}
+.ebene-body .sub-title{
+  font-family:'Inter',sans-serif;font-size:.78rem;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);
+  margin-bottom:28px;display:block;
+}
+.ebene-body p{color:var(--cream-dim);font-size:.97rem;line-height:1.8;margin-bottom:1.1rem;}
+.ebene-body p strong{color:var(--cream);}
+.ebene-body p:last-child{margin-bottom:0;}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer{background:var(--ink);padding:54px 0 34px;border-top:1px solid rgba(201,165,92,.15);}
+.foot-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;margin-bottom:32px;}
+.foot-brand .t{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--gold);}
+.foot-links{display:flex;gap:28px;flex-wrap:wrap;}
+.foot-links a{color:var(--cream-dim);text-decoration:none;font-size:.85rem;transition:color .3s;}
+.foot-links a:hover{color:var(--gold-bright);}
+.foot-copy{text-align:center;font-size:.78rem;color:rgba(207,200,184,.4);border-top:1px solid rgba(201,165,92,.08);padding-top:24px;}
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:900px){
+  nav{position:fixed;inset:0 0 0 auto;width:74%;max-width:320px;background:var(--green-deep);flex-direction:column;justify-content:center;gap:26px;transform:translateX(100%);transition:transform .4s;z-index:99;}
+  nav.open{transform:none;}
+  .burger{display:flex;z-index:100;}
+  .problem-inner{grid-template-columns:1fr;gap:48px;}
+  .ebene-inner,.ebene-inner.reverse{grid-template-columns:1fr;gap:36px;}
+  .ebene-inner.reverse .ebene-label,.ebene-inner.reverse .ebene-body{order:unset;}
+  .ebene-label{position:static;flex-direction:row;align-items:center;gap:20px;}
+  .ebene-num{font-size:3.5rem;}
+  .direction-bar{flex-direction:column;gap:0;}
+  .dir-label.left{border-radius:4px 4px 0 0;}
+  .dir-label.right{border-radius:0 0 4px 4px;}
+  .dir-arrow{border:none;border-left:1px solid rgba(201,165,92,.25);border-right:1px solid rgba(201,165,92,.25);padding:10px 28px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <a href="wu-vita-website.html" class="brand">
+    <span class="brand-name">Wu-Vita</span>
+  </a>
+  <nav id="nav">
+    <a href="was-ist-wu-vita.html" class="active" data-i18n="nav_what">Was ist Wu-Vita?</a>
+    <a href="coach.html" data-i18n="nav_coach">Der Coach</a>
+    <a href="seminare.html" data-i18n="nav_seminars">Seminare &amp; Preise</a>
+    <a href="wu-vita-website.html#kontakt" class="nav-cta" data-i18n="nav_cta">Anfrage</a>
+  </nav>
+  <div class="header-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero reveal">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="hero_eyebrow">Das Konzept</span>
+    <div class="gold-line" style="margin:1.2rem auto;"></div>
+    <h1><em data-i18n="hero_h1em">Was ist</em> <span data-i18n="hero_h1">Wu-Vita?</span></h1>
+    <p class="lead" data-i18n="hero_lead">Die Fusion aus jahrtausendealter Kampfkunst und moderner, evidenzbasierter Trainingswissenschaft – von außen nach innen.</p>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="wrap">
+    <div class="problem-inner">
+      <div class="problem-left reveal">
+        <span class="eyebrow" data-i18n="prob_eyebrow">Das Problem</span>
+        <div class="gold-line"></div>
+        <h2><span data-i18n="prob_h2a">Dein Körper läuft</span><br><em data-i18n="prob_h2em">auf Notprogramm</em></h2>
+        <p data-i18n="prob_p1">Ob stundenlanges Sitzen im Büro oder einseitiges Training an Fitnessgeräten: Wir behandeln unseren Körper oft wie eine Sammlung von Einzelteilen. Biologisch gesehen ist er aber ein Team.</p>
+        <p data-i18n="prob_p2">Wenn du ein Gelenk oder einen Muskel dauerhaft blockierst, schaltet dein Nervensystem in den <strong>Kompensationsmodus</strong>. Andere Muskeln übernehmen die Arbeit – still und heimlich.</p>
+        <p data-i18n="prob_p3">Das Tückische: Du merkst es oft erst, wenn es zu spät ist. Die Quittung sind chronische Schmerzen, schnellerer Verschleiß und das Gefühl, dass dir trotz Training die Kraft im Alltag oder Sport fehlt.</p>
+      </div>
+      <div class="problem-right reveal">
+        <div class="callout">
+          <div class="callout-title" data-i18n="callout1_title">Der Kompensationsmodus</div>
+          <p data-i18n="callout1_p">Ein blockiertes Gelenk zwingt andere Strukturen, dessen Aufgabe zu übernehmen. Das klingt clever – ist aber auf Dauer das sicherste Rezept für Überlastung und Verletzungen.</p>
+        </div>
+        <div class="callout">
+          <div class="callout-title" data-i18n="callout2_title">Das Symptom vs. die Ursache</div>
+          <p data-i18n="callout2_p">Die meisten Trainingsansätze bekämpfen das Symptom: Schmerz im Knie, Verspannung im Rücken. <strong>Wu-Vita sucht die Ursache</strong> – und beseitigt sie systematisch, Ebene für Ebene.</p>
+        </div>
+        <div class="callout">
+          <div class="callout-title" data-i18n="callout3_title">Die Lösung</div>
+          <p data-i18n="callout3_p">Ein System, das Kraft, Bewegung, Nervensystem und Ernährung als <strong>ein zusammenhängendes Ganzes</strong> betrachtet – und nicht als vier separate Baustellen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EBENEN INTRO -->
+<section class="ebenen-intro">
+  <div class="wrap reveal">
+    <span class="eyebrow" data-i18n="ebenen_eyebrow">Das System hinter der Performance</span>
+    <div class="gold-line" style="margin:1.2rem auto;"></div>
+    <h2><span data-i18n="ebenen_h2a">Die 4 Wirkungsebenen:</span><br><em data-i18n="ebenen_h2em">Dein Weg von außen nach innen</em></h2>
+    <p class="sub" data-i18n="ebenen_sub">Wu-Vita ist kein starres Konzept. Es ist ein dynamischer Prozess, der auf einem traditionellen Kung-Fu-Prinzip basiert: Wir arbeiten uns von der Oberfläche Schritt für Schritt in deine Tiefe vor. Erst wenn deine äußere Struktur stabil ist, können wir das Nervensystem beruhigen und deine Zellen im Kern optimal versorgen.</p>
+    <div class="direction-bar">
+      <div class="dir-label left" data-i18n="dir_left">Außen · Struktur &amp; Kraft</div>
+      <div class="dir-arrow">→</div>
+      <div class="dir-label" data-i18n="dir_mid1">Bewegung &amp; Dynamik</div>
+      <div class="dir-arrow">→</div>
+      <div class="dir-label" data-i18n="dir_mid2">Nervensystem &amp; Geist</div>
+      <div class="dir-arrow">→</div>
+      <div class="dir-label right" data-i18n="dir_right">Innen · Zellen &amp; Energie</div>
+    </div>
+  </div>
+</section>
+
+<!-- EBENE 1 -->
+<section class="ebene">
+  <div class="wrap">
+    <div class="ebene-inner reveal">
+      <div class="ebene-label">
+        <div class="ebene-num">01</div>
+        <div class="ebene-zh">力</div>
+        <span class="ebene-tag" data-i18n="e1_tag">Ebene 1</span>
+        <span class="ebene-type" data-i18n="e1_type">External</span>
+      </div>
+      <div class="ebene-body">
+        <h3><span data-i18n="e1_h3a">Die physische Basis</span></h3>
+        <span class="sub-title" data-i18n="e1_sub">Kraft &amp; Belastbarkeit</span>
+        <p data-i18n="e1_p1">Ein gestresster Geist und ein überlastetes Nervensystem brauchen ein stabiles Fundament, um überhaupt regenerieren zu können. Deshalb starten wir ganz außen: bei deiner Muskel- und Gelenkstruktur.</p>
+        <p data-i18n="e1_p2">Über ein exakt gesteuertes, progressives Krafttraining erhöhen wir die Belastungsgrenze deiner Sehnen, Bänder und Muskeln. Hier geht es nicht um Muskelaufbau für die Optik – es geht um <strong>gezielte Schmerzreduktion</strong>, echte Belastbarkeit im Alltag und maximale Leistungsfähigkeit, wenn es darauf ankommt.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EBENE 2 -->
+<section class="ebene">
+  <div class="wrap">
+    <div class="ebene-inner reverse reveal">
+      <div class="ebene-label">
+        <div class="ebene-num">02</div>
+        <div class="ebene-zh">武</div>
+        <span class="ebene-tag" data-i18n="e2_tag">Ebene 2</span>
+        <span class="ebene-type" data-i18n="e2_type">Die Brücke</span>
+      </div>
+      <div class="ebene-body">
+        <h3><span data-i18n="e2_h3a">Dreidimensionale Bewegung</span></h3>
+        <span class="sub-title" data-i18n="e2_sub">Struktur &amp; Dynamik</span>
+        <p data-i18n="e2_p1">Klassisches Gerätetraining bewegt dich nur in starren, zweidimensionalen Bahnen – Bankdrücken, Maschinen, immer dieselbe Schiene. Dein Alltag und erst recht jeder Sport fordern deinen Körper aber <strong>dreidimensional</strong>: durch Rotationen, Wendungen und komplexe Kraftübertragungen.</p>
+        <p data-i18n="e2_p2">Hier nutzen wir die Bewegungsprinzipien traditioneller chinesischer Kampfkünste als biomechanisches Werkzeug. Du lernst, Bewegung und Energie effizient durch deine gesamte Knochen- und Gelenkkette zu leiten – statt die Last isoliert und schmerzhaft auf einzelnen Gelenken abzufangen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EBENE 3 -->
+<section class="ebene">
+  <div class="wrap">
+    <div class="ebene-inner reveal">
+      <div class="ebene-label">
+        <div class="ebene-num">03</div>
+        <div class="ebene-zh">氣</div>
+        <span class="ebene-tag" data-i18n="e3_tag">Ebene 3</span>
+        <span class="ebene-type" data-i18n="e3_type">Internal</span>
+      </div>
+      <div class="ebene-body">
+        <h3><span data-i18n="e3_h3a">Neuronale Regulation</span></h3>
+        <span class="sub-title" data-i18n="e3_sub">Nervensystem &amp; Resilienz</span>
+        <p data-i18n="e3_p1">Jetzt gehen wir eine Schicht tiefer – unter die Oberfläche. Mithilfe von Elementen aus dem Qigong regulieren wir dein vegetatives Nervensystem. Durch bewusste Verlangsamung, präzise Koordination und gezielte Atmung aktivieren wir deinen <strong>„Erholungsnerv"</strong> – den Parasympathikus.</p>
+        <p data-i18n="e3_p2">Das schult deine Körperwahrnehmung und baut chronischen Stress Schicht für Schicht ab. Ein ruhiger Geist lässt den Körper um ein Vielfaches schneller regenerieren – und gibt dir die mentale Stärke, im Training und Alltag genau dann dranzubleiben, wenn dein Kopf dir sagt aufzugeben.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EBENE 4 -->
+<section class="ebene">
+  <div class="wrap">
+    <div class="ebene-inner reverse reveal">
+      <div class="ebene-label">
+        <div class="ebene-num">04</div>
+        <div class="ebene-zh">養</div>
+        <span class="ebene-tag" data-i18n="e4_tag">Ebene 4</span>
+        <span class="ebene-type" data-i18n="e4_type">Der Kern</span>
+      </div>
+      <div class="ebene-body">
+        <h3><span data-i18n="e4_h3a">Biochemische Versorgung</span></h3>
+        <span class="sub-title" data-i18n="e4_sub">Nährstoffe &amp; Energie</span>
+        <p data-i18n="e4_p1">Auf der tiefsten, zellulären Ebene betrachten wir den Treibstoff deines Systems. Wie ein Baum, der ohne nährstoffreiche Erde keinen stabilen Stamm bilden kann, braucht auch dein Körper das richtige Fundament. Fehlen Aminosäuren oder essenzielle Mikronährstoffe, läuft deine Regeneration dauerhaft auf Sparflamme.</p>
+        <p data-i18n="e4_p2">Wir analysieren deine Versorgung evidenzbasiert und schließen gezielt Lücken. Dabei gilt: <strong>Der Spaß am Essen und der psychologische Genuss</strong> sind selbst wichtige Faktoren für deine Regeneration – kein Genuss auf dem Opferblock.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand"><span class="t">Wu-Vita</span></div>
+      <div class="foot-links">
+        <a href="was-ist-wu-vita.html" data-i18n="nav_what">Was ist Wu-Vita?</a>
+        <a href="coach.html" data-i18n="nav_coach">Der Coach</a>
+        <a href="seminare.html" data-i18n="nav_seminars">Seminare &amp; Preise</a>
+        <a href="wu-vita-website.html#kontakt" data-i18n="foot_kontakt">Kontakt</a>
+        <a href="impressum.html" data-i18n="foot_imp">Impressum</a>
+        <a href="datenschutz.html" data-i18n="foot_dsg">Datenschutz</a>
+      </div>
+    </div>
+    <div class="foot-copy" data-i18n="foot_copy">© 2026 Wu-Vita · Dominik Frantzen · Ganzheitliches Coaching — Vergangenheit trifft Gegenwart</div>
+  </div>
+</footer>
+
+<script>
+const t={
+  de:{
+    nav_what:"Was ist Wu-Vita?",nav_coach:"Der Coach",nav_seminars:"Seminare &amp; Preise",nav_cta:"Anfrage",foot_kontakt:"Kontakt",
+    hero_eyebrow:"Das Konzept",hero_h1em:"Was ist",hero_h1:"Wu-Vita?",
+    hero_lead:"Die Fusion aus jahrtausendealter Kampfkunst und moderner, evidenzbasierter Trainingswissenschaft – von außen nach innen.",
+
+    prob_eyebrow:"Das Problem",
+    prob_h2a:"Dein Körper läuft",prob_h2em:"auf Notprogramm",
+    prob_p1:"Ob stundenlanges Sitzen im Büro oder einseitiges Training an Fitnessgeräten: Wir behandeln unseren Körper oft wie eine Sammlung von Einzelteilen. Biologisch gesehen ist er aber ein Team.",
+    prob_p2:"Wenn du ein Gelenk oder einen Muskel dauerhaft blockierst, schaltet dein Nervensystem in den <strong>Kompensationsmodus</strong>. Andere Muskeln übernehmen die Arbeit – still und heimlich.",
+    prob_p3:"Das Tückische: Du merkst es oft erst, wenn es zu spät ist. Die Quittung sind chronische Schmerzen, schnellerer Verschleiß und das Gefühl, dass dir trotz Training die Kraft im Alltag oder Sport fehlt.",
+    callout1_title:"Der Kompensationsmodus",
+    callout1_p:"Ein blockiertes Gelenk zwingt andere Strukturen, dessen Aufgabe zu übernehmen. Das klingt clever – ist aber auf Dauer das sicherste Rezept für Überlastung und Verletzungen.",
+    callout2_title:"Das Symptom vs. die Ursache",
+    callout2_p:"Die meisten Trainingsansätze bekämpfen das Symptom: Schmerz im Knie, Verspannung im Rücken. <strong>Wu-Vita sucht die Ursache</strong> – und beseitigt sie systematisch, Ebene für Ebene.",
+    callout3_title:"Die Lösung",
+    callout3_p:"Ein System, das Kraft, Bewegung, Nervensystem und Ernährung als <strong>ein zusammenhängendes Ganzes</strong> betrachtet – und nicht als vier separate Baustellen.",
+
+    ebenen_eyebrow:"Das System hinter der Performance",
+    ebenen_h2a:"Die 4 Wirkungsebenen:",ebenen_h2em:"Dein Weg von außen nach innen",
+    ebenen_sub:"Wu-Vita ist kein starres Konzept. Es ist ein dynamischer Prozess, der auf einem traditionellen Kung-Fu-Prinzip basiert: Wir arbeiten uns von der Oberfläche Schritt für Schritt in deine Tiefe vor. Erst wenn deine äußere Struktur stabil ist, können wir das Nervensystem beruhigen und deine Zellen im Kern optimal versorgen.",
+    dir_left:"Außen · Struktur &amp; Kraft",dir_mid1:"Bewegung &amp; Dynamik",dir_mid2:"Nervensystem &amp; Geist",dir_right:"Innen · Zellen &amp; Energie",
+
+    e1_tag:"Ebene 1",e1_type:"External",
+    e1_h3a:"Die physische Basis",e1_sub:"Kraft &amp; Belastbarkeit",
+    e1_p1:"Ein gestresster Geist und ein überlastetes Nervensystem brauchen ein stabiles Fundament, um überhaupt regenerieren zu können. Deshalb starten wir ganz außen: bei deiner Muskel- und Gelenkstruktur.",
+    e1_p2:"Über ein exakt gesteuertes, progressives Krafttraining erhöhen wir die Belastungsgrenze deiner Sehnen, Bänder und Muskeln. Hier geht es nicht um Muskelaufbau für die Optik – es geht um <strong>gezielte Schmerzreduktion</strong>, echte Belastbarkeit im Alltag und maximale Leistungsfähigkeit, wenn es darauf ankommt.",
+
+    e2_tag:"Ebene 2",e2_type:"Die Brücke",
+    e2_h3a:"Dreidimensionale Bewegung",e2_sub:"Struktur &amp; Dynamik",
+    e2_p1:"Klassisches Gerätetraining bewegt dich nur in starren, zweidimensionalen Bahnen – Bankdrücken, Maschinen, immer dieselbe Schiene. Dein Alltag und erst recht jeder Sport fordern deinen Körper aber <strong>dreidimensional</strong>: durch Rotationen, Wendungen und komplexe Kraftübertragungen.",
+    e2_p2:"Hier nutzen wir die Bewegungsprinzipien traditioneller chinesischer Kampfkünste als biomechanisches Werkzeug. Du lernst, Bewegung und Energie effizient durch deine gesamte Knochen- und Gelenkkette zu leiten – statt die Last isoliert und schmerzhaft auf einzelnen Gelenken abzufangen.",
+
+    e3_tag:"Ebene 3",e3_type:"Internal",
+    e3_h3a:"Neuronale Regulation",e3_sub:"Nervensystem &amp; Resilienz",
+    e3_p1:"Jetzt gehen wir eine Schicht tiefer – unter die Oberfläche. Mithilfe von Elementen aus dem Qigong regulieren wir dein vegetatives Nervensystem. Durch bewusste Verlangsamung, präzise Koordination und gezielte Atmung aktivieren wir deinen <strong>sog. Erholungsnerv</strong> – den Parasympathikus.",
+    e3_p2:"Das schult deine Körperwahrnehmung und baut chronischen Stress Schicht für Schicht ab. Ein ruhiger Geist lässt den Körper um ein Vielfaches schneller regenerieren – und gibt dir die mentale Stärke, im Training und Alltag genau dann dranzubleiben, wenn dein Kopf dir sagt aufzugeben.",
+
+    e4_tag:"Ebene 4",e4_type:"Der Kern",
+    e4_h3a:"Biochemische Versorgung",e4_sub:"Nährstoffe &amp; Energie",
+    e4_p1:"Auf der tiefsten, zellulären Ebene betrachten wir den Treibstoff deines Systems. Wie ein Baum, der ohne nährstoffreiche Erde keinen stabilen Stamm bilden kann, braucht auch dein Körper das richtige Fundament. Fehlen Aminosäuren oder essenzielle Mikronährstoffe, läuft deine Regeneration dauerhaft auf Sparflamme.",
+    e4_p2:"Wir analysieren deine Versorgung evidenzbasiert und schließen gezielt Lücken. Dabei gilt: <strong>Der Spaß am Essen und der psychologische Genuss</strong> sind selbst wichtige Faktoren für deine Regeneration – kein Genuss auf dem Opferblock.",
+
+    foot_copy:"© 2026 Wu-Vita · Dominik Frantzen · Ganzheitliches Coaching — Vergangenheit trifft Gegenwart"
+  },
+  en:{
+    nav_what:"What is Wu-Vita?",nav_coach:"The Coach",nav_seminars:"Seminars &amp; Prices",nav_cta:"Enquire",foot_kontakt:"Contact",
+    hero_eyebrow:"The Concept",hero_h1em:"What is",hero_h1:"Wu-Vita?",
+    hero_lead:"The fusion of millennia-old martial arts and modern, evidence-based sports science – from the outside in.",
+
+    prob_eyebrow:"The Problem",
+    prob_h2a:"Your body is running",prob_h2em:"on emergency mode",
+    prob_p1:"Whether it's hours of sitting at a desk or one-sided machine training: we often treat our body like a collection of spare parts. Biologically, it's a team.",
+    prob_p2:"When you permanently block a joint or muscle, your nervous system switches into <strong>compensation mode</strong>. Other muscles quietly take over the workload – without you noticing.",
+    prob_p3:"The catch: you often don't feel it until it's too late. The result is chronic pain, accelerated wear and the frustrating sense that despite training, you lack strength in daily life or sport.",
+    callout1_title:"Compensation mode",
+    callout1_p:"A blocked joint forces other structures to take over its job. That sounds clever – but long-term it's the surest recipe for overload and injury.",
+    callout2_title:"Symptom vs. root cause",
+    callout2_p:"Most training approaches fight the symptom: knee pain, a stiff back. <strong>Wu-Vita finds the root cause</strong> – and eliminates it systematically, level by level.",
+    callout3_title:"The solution",
+    callout3_p:"A system that treats strength, movement, the nervous system and nutrition as <strong>one connected whole</strong> – not four separate building sites.",
+
+    ebenen_eyebrow:"The system behind the performance",
+    ebenen_h2a:"The 4 Levels of Effect:",ebenen_h2em:"Your journey from outside in",
+    ebenen_sub:"Wu-Vita is not a rigid concept. It is a dynamic process based on a traditional Kung Fu principle: we work from the surface inward, step by step. Only once your outer structure is stable can we calm the nervous system and optimally supply your cells at the core.",
+    dir_left:"Outside · Structure &amp; Strength",dir_mid1:"Movement &amp; Dynamics",dir_mid2:"Nervous System &amp; Mind",dir_right:"Inside · Cells &amp; Energy",
+
+    e1_tag:"Level 1",e1_type:"External",
+    e1_h3a:"The Physical Foundation",e1_sub:"Strength &amp; Resilience",
+    e1_p1:"A stressed mind and an overloaded nervous system need a stable foundation before they can recover. That is why we start on the outside: with your muscle and joint structure.",
+    e1_p2:"Through precisely programmed, progressive strength training we raise the load tolerance of your tendons, ligaments and muscles. This is not about building muscle for aesthetics – it is about <strong>targeted pain reduction</strong>, genuine resilience in daily life and peak performance when it counts.",
+
+    e2_tag:"Level 2",e2_type:"The Bridge",
+    e2_h3a:"Three-Dimensional Movement",e2_sub:"Structure &amp; Dynamics",
+    e2_p1:"Classic machine training moves you only in rigid, two-dimensional tracks – bench press, cable machines, always the same plane. Daily life and sport, however, demand your body in <strong>three dimensions</strong>: rotations, turns and complex force transfers.",
+    e2_p2:"Here we use the movement principles of traditional Chinese martial arts as a biomechanical tool. You learn to guide force and movement efficiently through your entire chain of bones and joints – instead of catching the load in an isolated, painful spot.",
+
+    e3_tag:"Level 3",e3_type:"Internal",
+    e3_h3a:"Neural Regulation",e3_sub:"Nervous System &amp; Resilience",
+    e3_p1:"Now we go a layer deeper – beneath the surface. Using elements from Qigong, we regulate your autonomic nervous system. Through deliberate slowing down, precise coordination and targeted breathing, we activate your <strong>recovery nerve</strong> – the parasympathetic system.",
+    e3_p2:"This sharpens body awareness and breaks down chronic stress layer by layer. A calm mind lets the body recover many times faster – and gives you the mental strength to stay consistent in training and daily life even when your head tells you to quit.",
+
+    e4_tag:"Level 4",e4_type:"The Core",
+    e4_h3a:"Biochemical Supply",e4_sub:"Nutrients &amp; Energy",
+    e4_p1:"At the deepest, cellular level, we look at the fuel powering your system. Like a tree that cannot grow a strong trunk without nutrient-rich soil, your body needs the right foundation. If amino acids or essential micronutrients are missing, your recovery runs permanently on low power.",
+    e4_p2:"We analyse your nutritional status with an evidence-based approach and close the gaps precisely. One rule always applies: <strong>enjoying food and the pleasure of eating</strong> are themselves key factors in your recovery – nothing goes on the sacrifice altar.",
+
+    foot_copy:"© 2026 Wu-Vita · Dominik Frantzen · Holistic Coaching — Past meets Present"
+  }
+};
+
+function setLang(lang){
+  document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(t[lang][k]!==undefined)el.innerHTML=t[lang][k];});
+  document.getElementById("btn-de").classList.toggle("active",lang==="de");
+  document.getElementById("btn-en").classList.toggle("active",lang==="en");
+  document.documentElement.lang=lang;
+  localStorage.setItem("wuvita-lang",lang);
+}
+const savedLang=localStorage.getItem("wuvita-lang")||"de";
+if(savedLang!=="de")setLang(savedLang);
+const hdr=document.getElementById("hdr");
+window.addEventListener("scroll",()=>hdr.classList.toggle("scrolled",window.scrollY>40));
+const burger=document.getElementById("burger"),nav=document.getElementById("nav");
+burger.addEventListener("click",()=>nav.classList.toggle("open"));
+nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+function checkReveals(){
+  document.querySelectorAll(".reveal:not(.in)").forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight-40)el.classList.add("in");
+  });
+}
+window.addEventListener("scroll",checkReveals,{passive:true});
+setTimeout(checkReveals,80);
+</script>
+</body>
+</html>
+

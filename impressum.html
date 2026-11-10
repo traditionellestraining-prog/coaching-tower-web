@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impressum – Wu-Vita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-deep:#1c3026;--green-darker:#142219;--green-mid:#2d4a3a;
+  --charcoal:#26282a;--charcoal-soft:#2f3133;
+  --gold:#c9a55c;--gold-bright:#e0c281;--gold-deep:#a07d3e;
+  --cream:#f3ede0;--cream-dim:#cfc8b8;--ink:#0f1813;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--green-darker);color:var(--cream);font-family:'Inter',sans-serif;font-weight:300;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.1;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+.eyebrow{font-family:'Inter',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:inline-block;}
+.gold-line{width:60px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:1.4rem 0;}
+
+header{position:fixed;top:0;left:0;right:0;z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 40px;transition:background .4s,padding .4s;}
+header.scrolled{background:rgba(20,34,25,.92);backdrop-filter:blur(14px);padding:12px 40px;border-bottom:1px solid rgba(201,165,92,.15);}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;justify-self:start;}
+.brand-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold);letter-spacing:.02em;}
+nav{display:flex;gap:34px;align-items:center;justify-self:center;}
+nav a{color:var(--cream-dim);text-decoration:none;font-size:.86rem;font-weight:400;letter-spacing:.03em;transition:color .3s;}
+nav a:hover,nav a.active{color:var(--gold-bright);}
+.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:9px 22px;border-radius:2px;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:all .35s;}
+.nav-cta:hover{background:var(--gold);color:var(--ink);}
+.header-right{display:flex;align-items:center;gap:12px;justify-self:end;}
+.lang-switch{display:flex;gap:6px;}
+.lang-btn{background:none;border:1px solid rgba(201,165,92,.35);color:var(--cream-dim);font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.1em;padding:4px 10px;border-radius:2px;cursor:pointer;transition:all .3s;}
+.lang-btn:hover{border-color:var(--gold);color:var(--gold);}
+.lang-btn.active{background:var(--gold);border-color:var(--gold);color:var(--ink);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;}
+.burger span{width:26px;height:2px;background:var(--gold);transition:.3s;}
+
+.page-content{padding:140px 0 100px;}
+.page-content .wrap{max-width:780px;}
+.page-content .eyebrow{margin-bottom:1rem;}
+.page-content h1{font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:2.5rem;}
+.page-content h1 em{font-style:italic;color:var(--gold);}
+
+.legal-block{margin-bottom:3rem;}
+.legal-block h2{font-size:1.4rem;color:var(--gold-bright);margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:1px solid rgba(201,165,92,.2);}
+.legal-block p{color:var(--cream-dim);margin-bottom:.6rem;font-size:.95rem;}
+.legal-block a{color:var(--gold);text-decoration:none;}
+.legal-block a:hover{text-decoration:underline;}
+
+footer{background:var(--charcoal);border-top:1px solid rgba(201,165,92,.15);padding:40px 0 28px;}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-bottom:28px;flex-wrap:wrap;}
+.foot-brand .t{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--gold);}
+.foot-links{display:flex;gap:28px;flex-wrap:wrap;}
+.foot-links a{color:var(--cream-dim);text-decoration:none;font-size:.83rem;transition:color .3s;}
+.foot-links a:hover{color:var(--gold);}
+.foot-copy{font-size:.75rem;color:rgba(207,200,184,.45);text-align:center;}
+
+@media(max-width:768px){
+  header{grid-template-columns:1fr auto;padding:16px 20px;}
+  nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--green-darker);flex-direction:column;justify-content:center;align-items:center;gap:40px;z-index:99;}
+  nav.open{display:flex;}
+  .burger{display:flex;}
+  .wrap{padding:0 20px;}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <a href="wu-vita-website.html" class="brand">
+    <span class="brand-name">Wu-Vita</span>
+  </a>
+  <nav id="nav">
+    <a href="was-ist-wu-vita.html" data-i18n="nav_what">Was ist Wu-Vita?</a>
+    <a href="coach.html" data-i18n="nav_coach">Der Coach</a>
+    <a href="seminare.html" data-i18n="nav_seminars">Seminare &amp; Preise</a>
+    <a href="wu-vita-website.html#kontakt" class="nav-cta" data-i18n="nav_cta">Anfrage</a>
+  </nav>
+  <div class="header-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="page-content">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="imp_eyebrow">Rechtliches</span>
+    <div class="gold-line"></div>
+    <h1 data-i18n="imp_h1">Impressum</h1>
+
+    <div class="legal-block">
+      <h2 data-i18n="imp_ang">Angaben gemäß § 5 TMG</h2>
+      <p>Dominik Frantzen</p>
+      <p>Ganzheitlicher Coach (Sport, Ernährung)</p>
+      <p>Robertstr. 18<br>51105 Köln</p>
+    </div>
+
+    <div class="legal-block">
+      <h2 data-i18n="imp_kontakt">Kontakt</h2>
+      <p data-i18n="imp_tel">Telefon: <a href="tel:+4917625956058">0176 25956058</a></p>
+      <p data-i18n="imp_mail">E-Mail: <a href="mailto:traditionellestraining@gmail.com">traditionellestraining@gmail.com</a></p>
+    </div>
+
+    <div class="legal-block">
+      <h2 data-i18n="imp_haftung_h">Haftung für Inhalte</h2>
+      <p data-i18n="imp_haftung_p">Als Diensteanbieter bin ich gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.</p>
+    </div>
+
+    <div class="legal-block">
+      <h2 data-i18n="imp_links_h">Haftung für Links</h2>
+      <p data-i18n="imp_links_p">Mein Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Deshalb kann ich für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+    </div>
+
+    <div class="legal-block">
+      <h2 data-i18n="imp_urh_h">Urheberrecht</h2>
+      <p data-i18n="imp_urh_p">Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+    </div>
+
+    <p style="margin-top:2rem;font-size:.85rem;color:rgba(207,200,184,.5);">
+      <a href="datenschutz.html" data-i18n="imp_dsg_link" style="color:var(--gold);">→ Zur Datenschutzerklärung</a>
+    </p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand"><span class="t">Wu-Vita</span></div>
+      <div class="foot-links">
+        <a href="was-ist-wu-vita.html" data-i18n="nav_what">Was ist Wu-Vita?</a>
+        <a href="coach.html" data-i18n="nav_coach">Der Coach</a>
+        <a href="seminare.html" data-i18n="nav_seminars">Seminare &amp; Preise</a>
+        <a href="wu-vita-website.html#kontakt" data-i18n="foot_kontakt">Kontakt</a>
+        <a href="impressum.html" data-i18n="foot_imp">Impressum</a>
+        <a href="datenschutz.html" data-i18n="foot_dsg">Datenschutz</a>
+      </div>
+    </div>
+    <div class="foot-copy" data-i18n="foot_copy">© 2026 Wu-Vita · Dominik Frantzen · Ganzheitliches Coaching — Vergangenheit trifft Gegenwart</div>
+  </div>
+</footer>
+
+<script>
+const t={
+  de:{
+    nav_what:"Was ist Wu-Vita?",nav_coach:"Der Coach",nav_seminars:"Seminare &amp; Preise",nav_cta:"Anfrage",foot_kontakt:"Kontakt",
+    foot_imp:"Impressum",foot_dsg:"Datenschutz",
+    foot_copy:"© 2026 Wu-Vita · Dominik Frantzen · Ganzheitliches Coaching — Vergangenheit trifft Gegenwart",
+    imp_eyebrow:"Rechtliches",imp_h1:"Impressum",
+    imp_ang:"Angaben gemäß § 5 TMG",
+    imp_kontakt:"Kontakt",
+    imp_tel:'Telefon: <a href="tel:+4917625956058">0176 25956058</a>',
+    imp_mail:'E-Mail: <a href="mailto:traditionellestraining@gmail.com">traditionellestraining@gmail.com</a>',
+    imp_haftung_h:"Haftung für Inhalte",
+    imp_haftung_p:"Als Diensteanbieter bin ich gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG bin ich als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen.",
+    imp_links_h:"Haftung für Links",
+    imp_links_p:"Mein Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.",
+    imp_urh_h:"Urheberrecht",
+    imp_urh_p:"Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung und Verbreitung bedürfen der schriftlichen Zustimmung des Autors.",
+    imp_dsg_link:"→ Zur Datenschutzerklärung"
+  },
+  en:{
+    nav_what:"What is Wu-Vita?",nav_coach:"The Coach",nav_seminars:"Seminars &amp; Prices",nav_cta:"Enquire",foot_kontakt:"Contact",
+    foot_imp:"Legal notice",foot_dsg:"Privacy policy",
+    foot_copy:"© 2026 Wu-Vita · Dominik Frantzen · Holistic Coaching — Past meets Present",
+    imp_eyebrow:"Legal",imp_h1:"Legal Notice",
+    imp_ang:"Information pursuant to § 5 TMG (German Telemedia Act)",
+    imp_kontakt:"Contact",
+    imp_tel:'Phone: <a href="tel:+4917625956058">+49 176 25956058</a>',
+    imp_mail:'E-Mail: <a href="mailto:traditionellestraining@gmail.com">traditionellestraining@gmail.com</a>',
+    imp_haftung_h:"Liability for content",
+    imp_haftung_p:"As a service provider I am responsible for my own content on these pages in accordance with general laws pursuant to § 7 para. 1 TMG. However, I am not obligated to monitor transmitted or stored third-party information.",
+    imp_links_h:"Liability for links",
+    imp_links_p:"My offering contains links to external third-party websites over whose content I have no influence. The respective provider or operator of the linked pages is always responsible for their content.",
+    imp_urh_h:"Copyright",
+    imp_urh_p:"The content and works created by the site operator on these pages are subject to German copyright law. Reproduction, editing and distribution require the written consent of the author.",
+    imp_dsg_link:"→ To the privacy policy"
+  }
+};
+function setLang(lang){
+  const tr=t[lang];
+  for(const k in tr){document.querySelectorAll('[data-i18n="'+k+'"]').forEach(el=>{el.innerHTML=tr[k];});}
+  document.getElementById("btn-de").classList.toggle("active",lang==="de");
+  document.getElementById("btn-en").classList.toggle("active",lang==="en");
+  document.documentElement.lang=lang;
+  localStorage.setItem("wuvita-lang",lang);
+}
+const savedLang=localStorage.getItem("wuvita-lang")||"de";
+if(savedLang!=="de")setLang(savedLang);
+const hdr=document.getElementById("hdr");
+window.addEventListener("scroll",()=>hdr.classList.toggle("scrolled",window.scrollY>40));
+const burger=document.getElementById("burger"),nav=document.getElementById("nav");
+burger.addEventListener("click",()=>nav.classList.toggle("open"));
+nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+</script>
+</body>
+</html>

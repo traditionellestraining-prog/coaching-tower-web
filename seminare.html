@@ -1,0 +1,825 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seminare & Preise – Wu-Vita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-deep:#1c3026;--green-darker:#142219;--green-mid:#2d4a3a;
+  --charcoal:#26282a;--charcoal-soft:#2f3133;
+  --gold:#c9a55c;--gold-bright:#e0c281;--gold-deep:#a07d3e;
+  --cream:#f3ede0;--cream-dim:#cfc8b8;--ink:#0f1813;
+  --card-bg:#1a2e22;--card-border:rgba(201,165,92,.5);
+  --header-red:#0f1813;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--green-darker);color:var(--cream);font-family:'Inter',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.15;}
+.zh{font-family:'Noto Serif SC',serif;}
+.wrap{max-width:1260px;margin:0 auto;padding:0 32px;}
+.eyebrow{font-family:'Inter',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:inline-block;}
+.reveal{animation:fadeUp .8s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+
+/* ── HEADER ────────────────────────────────────────── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  padding:20px 40px;transition:background .4s,padding .4s;
+}
+header.scrolled{background:rgba(20,34,25,.92);backdrop-filter:blur(14px);padding:12px 40px;border-bottom:1px solid rgba(201,165,92,.15);}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;justify-self:start;}
+.brand-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold);letter-spacing:.02em;}
+nav{display:flex;gap:34px;align-items:center;justify-self:center;}
+nav a{color:var(--cream-dim);text-decoration:none;font-size:.86rem;font-weight:400;letter-spacing:.03em;transition:color .3s;}
+nav a:hover,nav a.active{color:var(--gold-bright);}
+.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:9px 22px;border-radius:2px;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:all .35s;}
+.nav-cta:hover{background:var(--gold);color:var(--ink);}
+.header-right{display:flex;align-items:center;gap:12px;justify-self:end;}
+.lang-switch{display:flex;gap:6px;}
+.lang-btn{background:none;border:1px solid rgba(201,165,92,.35);color:var(--cream-dim);font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.1em;padding:4px 10px;border-radius:2px;cursor:pointer;transition:all .3s;}
+.lang-btn:hover{border-color:var(--gold);color:var(--gold);}
+.lang-btn.active{background:var(--gold);border-color:var(--gold);color:var(--ink);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;}
+.burger span{width:26px;height:2px;background:var(--gold);transition:.3s;}
+
+/* ── HERO ───────────────────────────────────────────── */
+.page-hero{
+  padding:160px 0 80px;
+  text-align:center;
+  border-bottom:1px solid rgba(201,165,92,.15);
+  background:radial-gradient(ellipse at 50% 0%, rgba(201,165,92,.07) 0%, transparent 70%);
+}
+.page-hero h1{font-size:clamp(2.6rem,6vw,4.2rem);color:var(--cream);}
+.page-hero h1 em{color:var(--gold);font-style:italic;}
+.page-hero .lead{margin-top:1rem;font-size:1.05rem;color:var(--cream-dim);max-width:560px;margin-left:auto;margin-right:auto;}
+.gold-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:1.6rem auto;}
+
+/* ── CARDS GRID ─────────────────────────────────────── */
+.cards-section{padding:90px 0 110px;}
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+}
+.cards-grid--4{
+  grid-template-columns:repeat(4,1fr);
+}
+
+/* ── SINGLE CARD ────────────────────────────────────── */
+.kachel{
+  position:relative;
+  display:flex;flex-direction:column;
+  /* gold vertical borders via box-shadow / border */
+  border-left:1px solid var(--card-border);
+  border-right:1px solid var(--card-border);
+  margin-right:-1px; /* collapse double borders */
+  background:var(--card-bg);
+  transition:transform .35s, box-shadow .35s;
+}
+.kachel:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.45);}
+
+/* gold top + bottom accent line */
+.kachel::before,.kachel::after{
+  content:'';position:absolute;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  pointer-events:none;
+}
+.kachel::before{top:0;}
+.kachel::after{bottom:0;}
+
+/* header bar (dark red, like image) */
+.kachel-header{
+  background:var(--header-red);
+  padding:18px 22px 16px;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  text-align:center;
+}
+.kachel-header h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.45rem;font-weight:700;
+  color:var(--gold);line-height:1.2;
+}
+.kachel-header .zh-title{
+  font-family:'Noto Serif SC',serif;
+  font-size:1rem;color:rgba(255,255,255,.8);
+  letter-spacing:.12em;
+}
+.kachel-tag{
+  display:inline-block;
+  background:rgba(255,255,255,.15);
+  color:#fff;font-size:.68rem;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;
+  padding:3px 10px;border-radius:2px;margin-bottom:6px;
+}
+
+/* image area */
+.kachel-img{
+  width:100%;aspect-ratio:4/3;overflow:hidden;
+  background:var(--green-mid);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.kachel-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.kachel-img .img-placeholder{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(201,165,92,.4);
+}
+.kachel-img .img-placeholder .zh-big{
+  font-family:'Noto Serif SC',serif;font-size:5rem;
+  color:rgba(201,165,92,.18);line-height:1;
+}
+
+/* body */
+.kachel-body{
+  padding:26px 24px 20px;
+  flex:1;display:flex;flex-direction:column;gap:14px;
+}
+.kachel-desc{font-size:.9rem;color:var(--cream-dim);line-height:1.75;}
+.kachel-meta{display:flex;flex-direction:column;gap:6px;}
+.meta-row{display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--cream-dim);}
+.meta-row .icon{color:var(--gold);font-size:.85rem;min-width:16px;}
+
+/* accordion / details */
+.kachel-details{border-top:1px solid rgba(201,165,92,.18);margin-top:auto;}
+.kachel-details summary{
+  list-style:none;cursor:pointer;
+  padding:14px 24px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Cormorant Garamond',serif;font-size:1.05rem;
+  color:var(--gold);user-select:none;
+}
+.kachel-details summary::-webkit-details-marker{display:none;}
+.kachel-details summary .arrow{
+  transition:transform .3s;font-size:1.1rem;color:var(--gold);
+}
+.kachel-details[open] summary .arrow{transform:rotate(180deg);}
+.kachel-details-inner{padding:4px 24px 20px;font-size:.88rem;color:var(--cream-dim);}
+
+/* CTA button */
+.btn-gold{
+  display:inline-block;
+  background:transparent;border:1px solid var(--gold);
+  color:var(--gold);font-family:'Inter',sans-serif;
+  font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  padding:11px 26px;border-radius:2px;cursor:pointer;
+  text-decoration:none;text-align:center;
+  transition:background .3s,color .3s;
+  margin:0 24px 24px;
+}
+.btn-gold:hover{background:var(--gold);color:var(--ink);}
+
+/* ── BOOKING FORM CARD ──────────────────────────────── */
+.booking-form{display:flex;flex-direction:column;gap:12px;padding:0 24px 24px;}
+.booking-form label{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:flex;flex-direction:column;gap:5px;}
+.booking-form input,
+.booking-form select,
+.booking-form textarea{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(201,165,92,.3);
+  color:var(--cream);font-family:'Inter',sans-serif;font-size:.88rem;
+  padding:10px 14px;border-radius:2px;outline:none;
+  transition:border-color .3s;
+  resize:vertical;
+}
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus{border-color:var(--gold);}
+.booking-form select option{background:var(--green-deep);color:var(--cream);}
+.booking-form textarea{min-height:90px;}
+.btn-submit{
+  background:var(--gold);color:var(--ink);
+  border:none;font-family:'Inter',sans-serif;
+  font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:13px 28px;border-radius:2px;cursor:pointer;
+  transition:background .3s,transform .2s;
+  margin-top:4px;
+}
+.btn-submit:hover{background:var(--gold-bright);transform:translateY(-1px);}
+.form-note{font-size:.75rem;color:rgba(207,200,184,.5);text-align:center;padding:0 24px 8px;}
+
+/* ── NEWSLETTER SECTION ──────────────────────────────── */
+.newsletter{
+  padding:70px 0 90px;
+  border-top:1px solid rgba(201,165,92,.12);
+  text-align:center;
+}
+.newsletter h2{font-size:2rem;color:var(--cream);}
+.newsletter h2 em{color:var(--gold);font-style:italic;}
+.newsletter p{color:var(--cream-dim);margin:.8rem auto 2rem;max-width:480px;font-size:.93rem;}
+.notify-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.notify-form input{
+  background:rgba(255,255,255,.05);border:1px solid rgba(201,165,92,.3);
+  color:var(--cream);font-family:'Inter',sans-serif;font-size:.88rem;
+  padding:12px 18px;border-radius:2px;outline:none;min-width:280px;
+  transition:border-color .3s;
+}
+.notify-form input:focus{border-color:var(--gold);}
+.notify-form button{
+  background:var(--gold);color:var(--ink);border:none;
+  font-family:'Inter',sans-serif;font-size:.8rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:12px 28px;border-radius:2px;cursor:pointer;transition:background .3s;
+}
+.notify-form button:hover{background:var(--gold-bright);}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+footer{background:var(--green-darker);border-top:1px solid rgba(201,165,92,.12);padding:48px 0 32px;}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;margin-bottom:32px;}
+.foot-brand .t{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--gold);}
+.foot-links{display:flex;flex-direction:column;gap:10px;}
+.foot-links a{color:var(--cream-dim);text-decoration:none;font-size:.85rem;transition:color .3s;}
+.foot-links a:hover{color:var(--gold);}
+.foot-copy{font-size:.75rem;color:rgba(207,200,184,.4);text-align:center;border-top:1px solid rgba(201,165,92,.08);padding-top:24px;}
+
+/* ── RESPONSIVE ──────────────────────────────────────── */
+@media(max-width:960px){
+  .cards-grid,.cards-grid--4{grid-template-columns:1fr;}
+  .kachel{margin-right:0;margin-bottom:-1px;}
+}
+@media(max-width:900px){
+  nav{position:fixed;inset:0 0 0 auto;width:74%;max-width:320px;background:var(--green-deep);flex-direction:column;justify-content:center;gap:26px;transform:translateX(100%);transition:transform .4s;z-index:99;}
+  nav.open{transform:none;}
+  .burger{display:flex;z-index:100;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <a href="wu-vita-website.html" class="brand">
+    <span class="brand-name">Wu-Vita</span>
+  </a>
+  <nav id="nav">
+    <a href="was-ist-wu-vita.html" data-i18n="nav_what">Was ist Wu-Vita?</a>
+    <a href="coach.html" data-i18n="nav_coach">Der Coach</a>
+    <a href="seminare.html" class="active" data-i18n="nav_seminars">Seminare &amp; Preise</a>
+    <a href="wu-vita-website.html#kontakt" class="nav-cta" data-i18n="nav_cta">Anfrage</a>
+  </nav>
+  <div class="header-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero reveal">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="hero_eyebrow">Online · Live · Köln</span>
+    <div class="gold-line"></div>
+    <h1><span data-i18n="hero_h1">Seminare &amp;</span> <em data-i18n="hero_h1em">Preise</em></h1>
+    <p class="lead" data-i18n="hero_lead">Wähle deinen Weg – Online-Kurse für den Einstieg oder Live-Seminare für die Tiefe.</p>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="cards-section">
+  <div class="wrap">
+    <div class="cards-grid">
+
+      <!-- KACHEL 1: Qi Gong Online -->
+      <div class="kachel reveal">
+        <div class="kachel-header">
+          <span class="kachel-tag" data-i18n="c1_tag">Online-Kurs</span>
+          <h3 data-i18n="c1_title">Basis Wissen Qi Gong</h3>
+        </div>
+        <div class="kachel-img">
+          <div class="img-placeholder">
+            <span class="zh-big">氣</span>
+          </div>
+        </div>
+        <div class="kachel-body">
+          <p class="kachel-desc" data-i18n="c1_desc">
+            Was ist Qi Gong, woher kommt es – und was bewirkt es wirklich? In diesem Seminar bekommst du ein fundiertes Grundverständnis: von den Prinzipien und Stilen über Zhang Zhuang bis zur wissenschaftlichen Studienlage und modernen Anwendung.
+          </p>
+          <div class="kachel-meta">
+            <div class="meta-row"><span class="icon">◷</span> <span data-i18n="c1_dur">60 Min.</span></div>
+            <div class="meta-row"><span class="icon">◎</span> <span data-i18n="c1_loc">Digitales Meeting</span></div>
+            <div class="meta-row"><span class="icon">✦</span> <span data-i18n="c1_level">Einsteiger</span></div>
+            <div class="meta-row"><span class="icon">€</span> <span data-i18n="c1_price"><strong>34,99 €</strong></span></div>
+          </div>
+        </div>
+        <details class="kachel-details">
+          <summary data-i18n="c1_more">Kursinhalt <span class="arrow">▾</span></summary>
+          <div class="kachel-details-inner" data-i18n="c1_more_text">
+            01 · Was ist Qi Gong? – Herkunft, Begriff und Grundidee<br>
+            02 · Grundprinzipien – Die Arten des Qi und die drei Regulierungen<br>
+            03 · Stile &amp; Formen – Jing Gong / Dong Gong, weiche und harte Wege<br>
+            04 · Zhang Zhuang – Das Stehen wie ein Pfahl<br>
+            05 · Wirkung &amp; Studienlage – Was die Forschung zeigt – und was nicht<br>
+            06 · Moderne Anwendung – Praxis, Prävention und rechtlicher Rahmen
+          </div>
+        </details>
+        <a href="#buchen" class="btn-gold" data-i18n="c1_cta">Jetzt buchen</a>
+      </div>
+
+      <!-- KACHEL 2: Nutrition Basic Online -->
+      <div class="kachel reveal">
+        <div class="kachel-header">
+          <span class="kachel-tag" data-i18n="c2_tag">Online-Kurs</span>
+          <h3 data-i18n="c2_title">Nutrition Basic</h3>
+        </div>
+        <div class="kachel-img">
+          <div class="img-placeholder">
+            <span class="zh-big">養</span>
+          </div>
+        </div>
+        <div class="kachel-body">
+          <p class="kachel-desc" data-i18n="c2_desc">
+            Von Energie &amp; Kalorien über Makro- und Mikronährstoffe bis Hydratation – du bekommst das Grundwissen, das wirklich zählt, plus einen praktischen Praxisteil mit direktem Feedback.
+          </p>
+          <div class="kachel-meta">
+            <div class="meta-row"><span class="icon">◷</span> <span data-i18n="c2_dur">60 Min.</span></div>
+            <div class="meta-row"><span class="icon">◎</span> <span data-i18n="c2_loc">Digitales Meeting</span></div>
+            <div class="meta-row"><span class="icon">✦</span> <span data-i18n="c2_level">Alle Levels</span></div>
+            <div class="meta-row"><span class="icon">€</span> <span data-i18n="c2_price"><strong>34,99 €</strong></span></div>
+          </div>
+        </div>
+        <details class="kachel-details">
+          <summary data-i18n="c2_more">Kursinhalt <span class="arrow">▾</span></summary>
+          <div class="kachel-details-inner" data-i18n="c2_more_text">
+            01 · Energie &amp; Kalorien<br>
+            02 · Makronährstoffe<br>
+            03 · Hydratation<br>
+            04 · Mikronährstoffe<br>
+            05 · Praxisteil<br>
+            06 · Feedback
+          </div>
+        </details>
+        <a href="#buchen" class="btn-gold" data-i18n="c2_cta">Jetzt buchen</a>
+      </div>
+
+      <!-- KACHEL 3: Live Seminar Buchungsformular -->
+      <div class="kachel reveal" id="buchen">
+        <div class="kachel-header">
+          <span class="kachel-tag" data-i18n="c3_tag">Live · Köln</span>
+          <h3 data-i18n="c3_title">Live-Seminar buchen</h3>
+        </div>
+        <div class="kachel-img" style="aspect-ratio:4/3;background:var(--green-deep);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center;">
+          <span style="font-family:'Noto Serif SC',serif;font-size:4rem;color:rgba(201,165,92,.2);line-height:1;">武</span>
+          <p style="font-size:.85rem;color:var(--cream-dim);max-width:260px;" data-i18n="c3_img_text">
+            Intensive Live-Workshops in Köln – in kleinen Gruppen, mit direktem Feedback.
+          </p>
+        </div>
+        <div class="kachel-body" style="padding-bottom:0;">
+          <p class="kachel-desc" data-i18n="c3_desc">
+            Du möchtest ein Live-Seminar buchen oder mehr Informationen zu Terminen, Preisen und Inhalten? Schreib mir direkt.
+          </p>
+        </div>
+        <form class="booking-form" onsubmit="submitBooking(event)">
+          <label data-i18n="form_name">Name
+            <input type="text" name="name" required placeholder="Dein Name">
+          </label>
+          <label data-i18n="form_email">E-Mail
+            <input type="email" name="email" required placeholder="deine@email.de">
+          </label>
+          <label data-i18n="form_seminar">Interesse an
+            <select name="seminar">
+              <option value="" data-i18n="form_select">— Seminar auswählen —</option>
+              <option value="qigong_live">Qi Gong Live-Seminar</option>
+              <option value="nutrition_live">Ernährung Live-Workshop</option>
+              <option value="athletik">Athletik &amp; Kettlebell</option>
+              <option value="wuvita_basics">Wu-Vita Grundlagen (1 Tag)</option>
+              <option value="andere">Sonstiges / Frage</option>
+            </select>
+          </label>
+          <label data-i18n="form_msg">Nachricht (optional)
+            <textarea name="message" placeholder="Was möchtest du wissen?"></textarea>
+          </label>
+          <button type="submit" class="btn-submit" data-i18n="form_submit">Anfrage senden</button>
+          <p id="form-success" style="display:none;color:var(--gold);text-align:center;font-size:.85rem;padding-bottom:8px;" data-i18n="form_ok">Danke! Ich melde mich so schnell wie möglich.</p>
+        </form>
+        <p class="form-note" data-i18n="form_note">Kein Spam. Nur direkte Antworten von Dominik.</p>
+      </div>
+
+    </div><!-- /cards-grid -->
+  </div>
+</section>
+
+<!-- COACHING PREISE -->
+<section class="cards-section" id="coaching-preise">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin-bottom:2.5rem;">
+      <span class="eyebrow" data-i18n="cp_eyebrow">Persönliches Coaching</span>
+      <div class="gold-line"></div>
+      <h2 data-i18n="cp_h2">Coaching <em>Preise</em></h2>
+      <p data-i18n="cp_sub">Individuell. Persönlich. Ohne Kompromisse.</p>
+    </div>
+    <div class="cards-grid">
+
+      <!-- 2 Monate -->
+      <div class="kachel reveal">
+        <div class="kachel-header">
+          <span class="kachel-tag" data-i18n="cp1_tag">Einstieg</span>
+          <h3 data-i18n="cp1_title">2 Monate Coaching</h3>
+        </div>
+        <div class="kachel-img">
+          <div class="img-placeholder">
+            <span class="zh-big">始</span>
+          </div>
+        </div>
+        <div class="kachel-body">
+          <p class="kachel-desc" data-i18n="cp1_desc">
+            Der perfekte Einstieg – du lernst das System kennen, baust erste Routinen auf und spürst, was echtes individuelles Coaching bedeutet.
+          </p>
+          <div class="kachel-meta">
+            <div class="meta-row"><span class="icon">€</span> <span data-i18n="cp1_price"><strong>550 € / Monat</strong></span></div>
+            <div class="meta-row"><span class="icon">◷</span> <span data-i18n="cp1_dur">8 Wochen</span></div>
+            <div class="meta-row"><span class="icon">◎</span> <span data-i18n="cp1_loc">Online oder Live · Köln</span></div>
+            <div class="meta-row"><span class="icon">✦</span> <span data-i18n="cp1_inc">mind. 8 Coaching-Termine + tägliche Begleitung</span></div>
+          </div>
+        </div>
+        <details class="kachel-details">
+          <summary data-i18n="cp1_more">Leistungen <span class="arrow">▾</span></summary>
+          <div class="kachel-details-inner" data-i18n="cp1_more_text">
+            Anamnese & Assessment<br>
+            Individueller Trainings- & Ernährungsplan<br>
+            mind. 4 Coaching-Termine pro Monat<br>
+            Tägliches Check-in (Motivation, Stress, Fortschritt)<br>
+            Videoanalyse auf Anfrage
+          </div>
+        </details>
+        <a href="wu-vita-website.html#kontakt" class="btn-gold" data-i18n="cp_cta">Anfrage stellen</a>
+      </div>
+
+      <!-- 6 Monate -->
+      <div class="kachel reveal" style="position:relative;">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--green-deep);font-size:.7rem;font-weight:700;letter-spacing:.08em;padding:4px 14px;border-radius:20px;white-space:nowrap;" data-i18n="cp2_badge">Empfohlen</div>
+        <div class="kachel-header">
+          <span class="kachel-tag" data-i18n="cp2_tag">Transformation</span>
+          <h3 data-i18n="cp2_title">6 Monate Coaching</h3>
+        </div>
+        <div class="kachel-img">
+          <div class="img-placeholder">
+            <span class="zh-big">变</span>
+          </div>
+        </div>
+        <div class="kachel-body">
+          <p class="kachel-desc" data-i18n="cp2_desc">
+            Hier entsteht echte Veränderung. Sechs Monate reichen aus, um neue Gewohnheiten zu verankern, Schwachstellen zu schließen und nachhaltige Leistung aufzubauen.
+          </p>
+          <div class="kachel-meta">
+            <div class="meta-row"><span class="icon">€</span> <span data-i18n="cp2_price"><strong>350 € / Monat</strong></span></div>
+            <div class="meta-row"><span class="icon">◷</span> <span data-i18n="cp2_dur">24 Wochen</span></div>
+            <div class="meta-row"><span class="icon">◎</span> <span data-i18n="cp2_loc">Online oder Live · Köln</span></div>
+            <div class="meta-row"><span class="icon">✦</span> <span data-i18n="cp2_inc">mind. 24 Coaching-Termine + tägliche Begleitung</span></div>
+          </div>
+        </div>
+        <details class="kachel-details">
+          <summary data-i18n="cp2_more">Leistungen <span class="arrow">▾</span></summary>
+          <div class="kachel-details-inner" data-i18n="cp2_more_text">
+            Alles aus dem 2-Monats-Paket<br>
+            Regelmäßige Planaktualisierungen<br>
+            Fortschritts-Check alle 4 Wochen<br>
+            Erweiterte Videoanalyse<br>
+            Prioritäts-Support bei Fragen
+          </div>
+        </details>
+        <a href="wu-vita-website.html#kontakt" class="btn-gold" data-i18n="cp_cta">Anfrage stellen</a>
+      </div>
+
+      <!-- 12 Monate -->
+      <div class="kachel reveal">
+        <div class="kachel-header">
+          <span class="kachel-tag" data-i18n="cp3_tag">Mastery</span>
+          <h3 data-i18n="cp3_title">12 Monate Coaching</h3>
+        </div>
+        <div class="kachel-img">
+          <div class="img-placeholder">
+            <span class="zh-big">道</span>
+          </div>
+        </div>
+        <div class="kachel-body">
+          <p class="kachel-desc" data-i18n="cp3_desc">
+            Ein Jahr. Ein System. Ein Ergebnis, das bleibt. Für alle, die nicht nur ihr Ziel erreichen, sondern den Weg zur dauerhaften Gewohnheit machen wollen.
+          </p>
+          <div class="kachel-meta">
+            <div class="meta-row"><span class="icon">€</span> <span data-i18n="cp3_price"><strong>250 € / Monat</strong></span></div>
+            <div class="meta-row"><span class="icon">◷</span> <span data-i18n="cp3_dur">52 Wochen</span></div>
+            <div class="meta-row"><span class="icon">◎</span> <span data-i18n="cp3_loc">Online oder Live · Köln</span></div>
+            <div class="meta-row"><span class="icon">✦</span> <span data-i18n="cp3_inc">mind. 48 Coaching-Termine + tägliche Begleitung</span></div>
+          </div>
+        </div>
+        <details class="kachel-details">
+          <summary data-i18n="cp3_more">Leistungen <span class="arrow">▾</span></summary>
+          <div class="kachel-details-inner" data-i18n="cp3_more_text">
+            Alles aus dem 6-Monats-Paket<br>
+            Quartals-Reviews mit Zielneuausrichtung<br>
+            Unbegrenzter Support-Zugang<br>
+            Saisonale Anpassungen (Wettkampf, Urlaub, etc.)<br>
+            Langzeit-Videoanalyse & Fortschritts-Dokumentation
+          </div>
+        </details>
+        <a href="wu-vita-website.html#kontakt" class="btn-gold" data-i18n="cp_cta">Anfrage stellen</a>
+      </div>
+
+    </div><!-- /cards-grid -->
+  </div>
+</section>
+
+<!-- EINZELBUCHUNGEN -->
+<section class="cards-section" id="einzelbuchungen">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin-bottom:2.5rem;">
+      <span class="eyebrow" data-i18n="eb_eyebrow">Einzelne Buchungen</span>
+      <div class="gold-line"></div>
+      <h2 data-i18n="eb_h2">Einzelne <em>Leistungen</em></h2>
+      <p data-i18n="eb_sub">Kein Paket nötig – buche gezielt, was du gerade brauchst.</p>
+    </div>
+    <div class="cards-grid cards-grid--4">
+
+      <!-- Personal Training -->
+      <div class="kachel reveal">
+        <div class="kachel-header">
+          <span class="kachel-tag" data-i18n="eb1_tag">Online · Live</span>
+          <h3 data-i18n="eb1_title">Personal Training</h3>
+        </div>
+        <div class="kachel-img">
+          <div class="img-placeholder"><span class="zh-big">力</span></div>
+        </div>
+        <div class="kachel-body">
+          <p class="kachel-desc" data-i18n="eb1_desc">
+            Eine Einheit mit direktem Feedback – Technik, Kraft, Beweglichkeit oder Kampfkunst. Du bestimmst den Fokus.
+          </p>
+          <div class="kachel-meta">
+            <div class="meta-row"><span class="icon">€</span> <span data-i18n="eb1_price"><strong>60 € Online · 120 € Live</strong></span></div>
+            <div class="meta-row"><span class="icon">◷</span> <span data-i18n="eb1_dur">60 Min.</span></div>
+            <div class="meta-row"><span class="icon">◎</span> <span data-i18n="eb1_loc">Online oder Live · Köln</span></div>
+          </div>
+        </div>
+        <a href="wu-vita-website.html#kontakt" class="btn-gold" data-i18n="eb_cta">Termin anfragen</a>
+      </div>
+
+      <!-- Ernährungsberatung -->
+      <div class="kachel reveal">
+        <div class="kachel-header">
+          <span class="kachel-tag" data-i18n="eb2_tag">Online · Live</span>
+          <h3 data-i18n="eb2_title">Ernährungsberatung</h3>
+        </div>
+        <div class="kachel-img">
+          <div class="img-placeholder"><span class="zh-big">養</span></div>
+        </div>
+        <div class="kachel-body">
+          <p class="kachel-desc" data-i18n="eb2_desc">
+            Analyse deiner aktuellen Ernährung, individuelle Empfehlungen und ein konkreter Plan – ohne Verbote, ohne Diäten.
+          </p>
+          <div class="kachel-meta">
+            <div class="meta-row"><span class="icon">€</span> <span data-i18n="eb2_price"><strong>75 €</strong></span></div>
+            <div class="meta-row"><span class="icon">◷</span> <span data-i18n="eb2_dur">60–90 Min.</span></div>
+            <div class="meta-row"><span class="icon">◎</span> <span data-i18n="eb2_loc">Online oder Live · Köln</span></div>
+          </div>
+        </div>
+        <a href="wu-vita-website.html#kontakt" class="btn-gold" data-i18n="eb_cta">Termin anfragen</a>
+      </div>
+
+      <!-- Videoanalyse -->
+      <div class="kachel reveal">
+        <div class="kachel-header">
+          <span class="kachel-tag" data-i18n="eb3_tag">Online</span>
+          <h3 data-i18n="eb3_title">Videoanalyse</h3>
+        </div>
+        <div class="kachel-img">
+          <div class="img-placeholder"><span class="zh-big">眼</span></div>
+        </div>
+        <div class="kachel-body">
+          <p class="kachel-desc" data-i18n="eb3_desc">
+            Schick mir dein Trainingsvideo – ich analysiere Biomechanik, Haltung und Technik aus mehreren Perspektiven und liefere dir ein detailliertes Feedback.
+          </p>
+          <div class="kachel-meta">
+            <div class="meta-row"><span class="icon">€</span> <span data-i18n="eb3_price"><strong>50 €</strong></span></div>
+            <div class="meta-row"><span class="icon">◷</span> <span data-i18n="eb3_dur">Feedback innerhalb 48 h</span></div>
+            <div class="meta-row"><span class="icon">◎</span> <span data-i18n="eb3_loc">100 % Online</span></div>
+          </div>
+        </div>
+        <a href="wu-vita-website.html#kontakt" class="btn-gold" data-i18n="eb_cta">Termin anfragen</a>
+      </div>
+
+      <!-- Blutbildanalyse -->
+      <div class="kachel reveal">
+        <div class="kachel-header">
+          <span class="kachel-tag" data-i18n="eb4_tag">Gesundheit</span>
+          <h3 data-i18n="eb4_title">Blutbildanalyse</h3>
+        </div>
+        <div class="kachel-img">
+          <div class="img-placeholder"><span class="zh-big">氣</span></div>
+        </div>
+        <div class="kachel-body">
+          <p class="kachel-desc" data-i18n="eb4_desc">
+            Gemeinsame Auswertung deines Blutbilds – ich erkläre die Werte verständlich, erkenne Muster und leite daraus konkrete Empfehlungen für Training, Ernährung und Regeneration ab.
+          </p>
+          <div class="kachel-meta">
+            <div class="meta-row"><span class="icon">€</span> <span data-i18n="eb4_price"><strong>50 €</strong></span></div>
+            <div class="meta-row"><span class="icon">◷</span> <span data-i18n="eb4_dur">60 Min.</span></div>
+            <div class="meta-row"><span class="icon">◎</span> <span data-i18n="eb4_loc">Online oder Live · Köln</span></div>
+          </div>
+        </div>
+        <a href="wu-vita-website.html#kontakt" class="btn-gold" data-i18n="eb_cta">Termin anfragen</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter reveal">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="notify_eyebrow">Immer up to date</span>
+    <div class="gold-line"></div>
+    <h2><span data-i18n="notify_h2">Neue Termine &amp;</span> <em data-i18n="notify_h2em">Events</em></h2>
+    <p data-i18n="notify_p">Trag dich ein und erfahre als Erster von neuen Seminarterminen, exklusiven Events und Frühbucherrabatten.</p>
+    <div class="notify-form">
+      <input type="email" data-i18n-placeholder="notify_ph" placeholder="deine@email.de">
+      <button data-i18n="notify_btn">Benachrichtigen</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand"><span class="t">Wu-Vita</span></div>
+      <div class="foot-links">
+        <a href="was-ist-wu-vita.html" data-i18n="nav_what">Was ist Wu-Vita?</a>
+        <a href="coach.html" data-i18n="nav_coach">Der Coach</a>
+        <a href="seminare.html" data-i18n="nav_seminars">Seminare &amp; Preise</a>
+        <a href="wu-vita-website.html#kontakt" data-i18n="foot_kontakt">Kontakt</a>
+        <a href="impressum.html" data-i18n="foot_imp">Impressum</a>
+        <a href="datenschutz.html" data-i18n="foot_dsg">Datenschutz</a>
+      </div>
+    </div>
+    <div class="foot-copy" data-i18n="foot_copy">© 2026 Wu-Vita · Dominik Frantzen · Ganzheitliches Coaching — Vergangenheit trifft Gegenwart</div>
+  </div>
+</footer>
+
+<script>
+/* ── i18n ─────────────────────────────────────────────── */
+const t={
+  de:{
+    nav_what:"Was ist Wu-Vita?",nav_coach:"Der Coach",nav_seminars:"Seminare &amp; Preise",nav_cta:"Anfrage",foot_kontakt:"Kontakt",
+    hero_eyebrow:"Online · Live · Köln",
+    hero_h1:"Seminare &amp;",hero_h1em:"Preise",
+    hero_lead:"Wähle deinen Weg – Online-Kurse für den Einstieg oder Live-Seminare für die Tiefe.",
+
+    c1_tag:"Online-Kurs",c1_title:"Basis Wissen Qi Gong",
+    c1_desc:"Was ist Qi Gong, woher kommt es – und was bewirkt es wirklich? In diesem Seminar bekommst du ein fundiertes Grundverständnis: von den Prinzipien und Stilen über Zhang Zhuang bis zur wissenschaftlichen Studienlage und modernen Anwendung.",
+    c1_dur:"60 Min.",c1_loc:"Digitales Meeting",c1_level:"Einsteiger",c1_price:"<strong>34,99 €</strong>",
+    c1_more:"Kursinhalt",
+    c1_more_text:"01 · Was ist Qi Gong? – Herkunft, Begriff und Grundidee<br>02 · Grundprinzipien – Die Arten des Qi und die drei Regulierungen<br>03 · Stile &amp; Formen – Jing Gong / Dong Gong, weiche und harte Wege<br>04 · Zhang Zhuang – Das Stehen wie ein Pfahl<br>05 · Wirkung &amp; Studienlage – Was die Forschung zeigt – und was nicht<br>06 · Moderne Anwendung – Praxis, Prävention und rechtlicher Rahmen",
+    c1_cta:"Jetzt buchen",
+
+    c2_tag:"Online-Kurs",c2_title:"Nutrition Basic",
+    c2_desc:"Von Energie &amp; Kalorien über Makro- und Mikronährstoffe bis Hydratation – du bekommst das Grundwissen, das wirklich zählt, plus einen praktischen Praxisteil mit direktem Feedback.",
+    c2_dur:"60 Min.",c2_loc:"Digitales Meeting",c2_level:"Alle Levels",c2_price:"<strong>34,99 €</strong>",
+    c2_more:"Kursinhalt",
+    c2_more_text:"01 · Energie &amp; Kalorien<br>02 · Makronährstoffe<br>03 · Hydratation<br>04 · Mikronährstoffe<br>05 · Praxisteil<br>06 · Feedback",
+    c2_cta:"Jetzt buchen",
+
+    c3_tag:"Live · Köln",c3_title:"Live-Seminar buchen",
+    c3_img_text:"Intensive Live-Workshops in Köln – in kleinen Gruppen, mit direktem Feedback.",
+    c3_desc:"Du möchtest ein Live-Seminar buchen oder mehr Informationen zu Terminen, Preisen und Inhalten? Schreib mir direkt.",
+    form_name:"Name",form_email:"E-Mail",form_seminar:"Interesse an",form_select:"— Seminar auswählen —",
+    form_msg:"Nachricht (optional)",form_submit:"Anfrage senden",
+    form_ok:"Danke! Ich melde mich so schnell wie möglich.",
+    form_note:"Kein Spam. Nur direkte Antworten von Dominik.",
+
+    notify_eyebrow:"Immer up to date",notify_h2:"Neue Termine &amp;",notify_h2em:"Events",
+    notify_p:"Trag dich ein und erfahre als Erster von neuen Seminarterminen, exklusiven Events und Frühbucherrabatten.",
+    notify_ph:"deine@email.de",notify_btn:"Benachrichtigen",
+    foot_copy:"© 2026 Wu-Vita · Dominik Frantzen · Ganzheitliches Coaching — Vergangenheit trifft Gegenwart",
+    cp_eyebrow:"Persönliches Coaching",cp_h2:"Coaching <em>Preise</em>",cp_sub:"Individuell. Persönlich. Ohne Kompromisse.",
+    cp_cta:"Anfrage stellen",
+    cp1_tag:"Einstieg",cp1_title:"2 Monate Coaching",
+    cp1_desc:"Der perfekte Einstieg – du lernst das System kennen, baust erste Routinen auf und spürst, was echtes individuelles Coaching bedeutet.",
+    cp1_price:"<strong>550 € / Monat</strong>",
+    cp1_dur:"8 Wochen",cp1_loc:"Online oder Live · Köln",cp1_inc:"mind. 8 Coaching-Termine + tägliche Begleitung",
+    cp1_more:"Leistungen",cp1_more_text:"Anamnese & Assessment<br>Individueller Trainings- & Ernährungsplan<br>mind. 4 Coaching-Termine pro Monat<br>Tägliches Check-in (Motivation, Stress, Fortschritt)<br>Videoanalyse auf Anfrage",
+    cp2_badge:"Empfohlen",cp2_tag:"Transformation",cp2_title:"6 Monate Coaching",
+    cp2_desc:"Hier entsteht echte Veränderung. Sechs Monate reichen aus, um neue Gewohnheiten zu verankern, Schwachstellen zu schließen und nachhaltige Leistung aufzubauen.",
+    cp2_price:"<strong>350 € / Monat</strong>",
+    cp2_dur:"24 Wochen",cp2_loc:"Online oder Live · Köln",cp2_inc:"mind. 24 Coaching-Termine + tägliche Begleitung",
+    cp2_more:"Leistungen",cp2_more_text:"Alles aus dem 2-Monats-Paket<br>Regelmäßige Planaktualisierungen<br>Fortschritts-Check alle 4 Wochen<br>Erweiterte Videoanalyse<br>Prioritäts-Support bei Fragen",
+    cp3_tag:"Mastery",cp3_title:"12 Monate Coaching",
+    cp3_desc:"Ein Jahr. Ein System. Ein Ergebnis, das bleibt. Für alle, die nicht nur ihr Ziel erreichen, sondern den Weg zur dauerhaften Gewohnheit machen wollen.",
+    cp3_price:"<strong>250 € / Monat</strong>",
+    cp3_dur:"52 Wochen",cp3_loc:"Online oder Live · Köln",cp3_inc:"mind. 48 Coaching-Termine + tägliche Begleitung",
+    cp3_more:"Leistungen",cp3_more_text:"Alles aus dem 6-Monats-Paket<br>Quartals-Reviews mit Zielneuausrichtung<br>Unbegrenzter Support-Zugang<br>Saisonale Anpassungen (Wettkampf, Urlaub, etc.)<br>Langzeit-Videoanalyse & Fortschritts-Dokumentation",
+    eb_eyebrow:"Einzelne Buchungen",eb_h2:"Einzelne <em>Leistungen</em>",eb_sub:"Kein Paket nötig – buche gezielt, was du gerade brauchst.",eb_cta:"Termin anfragen",
+    eb1_tag:"Online · Live",eb1_title:"Personal Training",eb1_desc:"Eine Einheit mit direktem Feedback – Technik, Kraft, Beweglichkeit oder Kampfkunst. Du bestimmst den Fokus.",eb1_price:"<strong>60 € Online · 120 € Live</strong>",eb1_dur:"60 Min.",eb1_loc:"Online oder Live · Köln",
+    eb2_tag:"Online · Live",eb2_title:"Ernährungsberatung",eb2_desc:"Analyse deiner aktuellen Ernährung, individuelle Empfehlungen und ein konkreter Plan – ohne Verbote, ohne Diäten.",eb2_price:"<strong>75 €</strong>",eb2_dur:"60–90 Min.",eb2_loc:"Online oder Live · Köln",
+    eb3_tag:"Online",eb3_title:"Videoanalyse",eb3_desc:"Schick mir dein Trainingsvideo – ich analysiere Biomechanik, Haltung und Technik aus mehreren Perspektiven und liefere dir ein detailliertes Feedback.",eb3_price:"<strong>50 €</strong>",eb3_dur:"Feedback innerhalb 48 h",eb3_loc:"100 % Online",
+    eb4_tag:"Gesundheit",eb4_title:"Blutbildanalyse",eb4_desc:"Gemeinsame Auswertung deines Blutbilds – ich erkläre die Werte verständlich, erkenne Muster und leite daraus konkrete Empfehlungen für Training, Ernährung und Regeneration ab.",eb4_price:"<strong>50 €</strong>",eb4_dur:"60 Min.",eb4_loc:"Online oder Live · Köln"
+  },
+  en:{
+    nav_what:"What is Wu-Vita?",nav_coach:"The Coach",nav_seminars:"Seminars &amp; Prices",nav_cta:"Enquire",foot_kontakt:"Contact",
+    hero_eyebrow:"Online · Live · Cologne",
+    hero_h1:"Seminars &amp;",hero_h1em:"Prices",
+    hero_lead:"Choose your path – online courses to start or live seminars to go deeper.",
+
+    c1_tag:"Online Course",c1_title:"Qi Gong Basics",
+    c1_desc:"What is Qi Gong, where does it come from – and what does it actually do? This seminar gives you a solid foundation: from principles and styles to Zhang Zhuang, the scientific evidence and modern application.",
+    c1_dur:"60 min.",c1_loc:"Digital meeting",c1_level:"Beginners",c1_price:"<strong>€ 34.99</strong>",
+    c1_more:"Course content",
+    c1_more_text:"Module 1: History &amp; philosophy of Qi Gong<br>Module 2: Breathwork &amp; body awareness<br>Module 3: The 8 Brocades (Ba Duan Jin)<br>Module 4: Standing meditation &amp; daily integration",
+    c1_cta:"Book now",
+
+    c2_tag:"Online Course",c2_title:"Nutrition Basic",
+    c2_desc:"From energy &amp; calories to macro- and micronutrients and hydration – you get the essential knowledge that actually matters, plus a practical session with direct feedback.",
+    c2_dur:"60 min.",c2_loc:"Digital meeting",c2_level:"All levels",c2_price:"<strong>€ 34.99</strong>",
+    c2_more:"Course content",
+    c2_more_text:"01 · Energy &amp; calories<br>02 · Macronutrients<br>03 · Hydration<br>04 · Micronutrients<br>05 · Practical session<br>06 · Feedback",
+    c2_cta:"Book now",
+
+    c3_tag:"Live · Cologne",c3_title:"Book a Live Seminar",
+    c3_img_text:"Intensive live workshops in Cologne – small groups, direct feedback.",
+    c3_desc:"Want to book a live seminar or get more information about dates, prices and content? Write to me directly.",
+    form_name:"Name",form_email:"E-Mail",form_seminar:"Interested in",form_select:"— Select seminar —",
+    form_msg:"Message (optional)",form_submit:"Send enquiry",
+    form_ok:"Thank you! I will get back to you as soon as possible.",
+    form_note:"No spam. Only direct replies from Dominik.",
+
+    notify_eyebrow:"Stay up to date",notify_h2:"New dates &amp;",notify_h2em:"Events",
+    notify_p:"Sign up and be the first to hear about new seminar dates, exclusive events and early-bird discounts.",
+    notify_ph:"your@email.com",notify_btn:"Notify me",
+    foot_copy:"© 2026 Wu-Vita · Dominik Frantzen · Holistic Coaching — Past meets Present",
+    cp_eyebrow:"Personal Coaching",cp_h2:"Coaching <em>Prices</em>",cp_sub:"Individual. Personal. No compromises.",
+    cp_cta:"Send enquiry",
+    cp1_tag:"Starter",cp1_title:"2-Month Coaching",
+    cp1_desc:"The perfect entry point – you get to know the system, build your first routines and experience what truly individual coaching feels like.",
+    cp1_price:"<strong>€550 / month</strong>",
+    cp1_dur:"8 weeks",cp1_loc:"Online or live · Cologne",cp1_inc:"min. 8 coaching sessions + daily support",
+    cp1_more:"What's included",cp1_more_text:"Intake & assessment<br>Individual training & nutrition plan<br>Min. 4 coaching sessions per month<br>Daily check-in (motivation, stress, progress)<br>Video analysis on request",
+    cp2_badge:"Recommended",cp2_tag:"Transformation",cp2_title:"6-Month Coaching",
+    cp2_desc:"Real change happens here. Six months is enough to anchor new habits, close weak points and build lasting performance.",
+    cp2_price:"<strong>€350 / month</strong>",
+    cp2_dur:"24 weeks",cp2_loc:"Online or live · Cologne",cp2_inc:"min. 24 coaching sessions + daily support",
+    cp2_more:"What's included",cp2_more_text:"Everything in the 2-month package<br>Regular plan updates<br>Progress check every 4 weeks<br>Extended video analysis<br>Priority support",
+    cp3_tag:"Mastery",cp3_title:"12-Month Coaching",
+    cp3_desc:"One year. One system. One result that lasts. For those who don't just want to reach their goal – they want to make the journey a permanent habit.",
+    cp3_price:"<strong>€250 / month</strong>",
+    cp3_dur:"52 weeks",cp3_loc:"Online or live · Cologne",cp3_inc:"min. 48 coaching sessions + daily support",
+    cp3_more:"What's included",cp3_more_text:"Everything in the 6-month package<br>Quarterly reviews & goal recalibration<br>Unlimited support access<br>Seasonal adjustments (competition, holidays, etc.)<br>Long-term video analysis & progress documentation",
+    eb_eyebrow:"Individual bookings",eb_h2:"Individual <em>services</em>",eb_sub:"No package needed – book exactly what you need right now.",eb_cta:"Request appointment",
+    eb1_tag:"Online · Live",eb1_title:"Personal Training",eb1_desc:"One session with direct feedback – technique, strength, mobility or martial arts. You set the focus.",eb1_price:"<strong>€60 online · €120 live</strong>",eb1_dur:"60 min.",eb1_loc:"Online or live · Cologne",
+    eb2_tag:"Online · Live",eb2_title:"Nutrition Consultation",eb2_desc:"Analysis of your current diet, individual recommendations and a concrete plan – no restrictions, no diets.",eb2_price:"<strong>€75</strong>",eb2_dur:"60–90 min.",eb2_loc:"Online or live · Cologne",
+    eb3_tag:"Online",eb3_title:"Video Analysis",eb3_desc:"Send me your training video – I analyse biomechanics, posture and technique from multiple angles and deliver detailed feedback.",eb3_price:"<strong>€50</strong>",eb3_dur:"Feedback within 48 h",eb3_loc:"100% online",
+    eb4_tag:"Health",eb4_title:"Blood Panel Analysis",eb4_desc:"Joint review of your blood work – I explain the values clearly, identify patterns and derive concrete recommendations for training, nutrition and recovery.",eb4_price:"<strong>€50</strong>",eb4_dur:"60 min.",eb4_loc:"Online or live · Cologne"
+  }
+};
+
+function setLang(lang){
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k=el.dataset.i18n;
+    if(t[lang][k]!==undefined) el.innerHTML=t[lang][k];
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>{
+    const k=el.dataset.i18nPlaceholder;
+    if(t[lang][k]!==undefined) el.placeholder=t[lang][k];
+  });
+  document.getElementById("btn-de").classList.toggle("active",lang==="de");
+  document.getElementById("btn-en").classList.toggle("active",lang==="en");
+  document.documentElement.lang=lang;
+  localStorage.setItem("wuvita-lang",lang);
+}
+
+/* booking form (mailto fallback until backend is ready) */
+function submitBooking(e){
+  e.preventDefault();
+  const fd=new FormData(e.target);
+  const body=`Name: ${fd.get('name')}\nSeminar: ${fd.get('seminar')}\nNachricht: ${fd.get('message')||'–'}`;
+  window.location.href=`mailto:traditionellestraining@gmail.com?subject=Seminar-Anfrage: ${encodeURIComponent(fd.get('seminar'))}&body=${encodeURIComponent(body)}`;
+  document.getElementById('form-success').style.display='block';
+  e.target.reset();
+}
+
+/* init */
+const savedLang=localStorage.getItem("wuvita-lang")||"de";
+if(savedLang!=="de") setLang(savedLang);
+
+const hdr=document.getElementById("hdr");
+window.addEventListener("scroll",()=>hdr.classList.toggle("scrolled",window.scrollY>40));
+
+const burger=document.getElementById("burger"),nav=document.getElementById("nav");
+burger.addEventListener("click",()=>nav.classList.toggle("open"));
+nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+
+function checkReveals(){
+  document.querySelectorAll(".reveal:not(.in)").forEach(el=>{
+    if(el.getBoundingClientRect().top<window.innerHeight-40)el.classList.add("in");
+  });
+}
+window.addEventListener("scroll",checkReveals,{passive:true});
+setTimeout(checkReveals,80);
+</script>
+</body>
+</html>
+

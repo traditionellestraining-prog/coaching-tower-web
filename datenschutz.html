@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datenschutzerklärung – Wu-Vita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-deep:#1c3026;--green-darker:#142219;--green-mid:#2d4a3a;
+  --charcoal:#26282a;--charcoal-soft:#2f3133;
+  --gold:#c9a55c;--gold-bright:#e0c281;--gold-deep:#a07d3e;
+  --cream:#f3ede0;--cream-dim:#cfc8b8;--ink:#0f1813;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--green-darker);color:var(--cream);font-family:'Inter',sans-serif;font-weight:300;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.1;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+.eyebrow{font-family:'Inter',sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:inline-block;}
+.gold-line{width:60px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:1.4rem 0;}
+
+header{position:fixed;top:0;left:0;right:0;z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 40px;transition:background .4s,padding .4s;}
+header.scrolled{background:rgba(20,34,25,.92);backdrop-filter:blur(14px);padding:12px 40px;border-bottom:1px solid rgba(201,165,92,.15);}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;justify-self:start;}
+.brand-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold);letter-spacing:.02em;}
+nav{display:flex;gap:34px;align-items:center;justify-self:center;}
+nav a{color:var(--cream-dim);text-decoration:none;font-size:.86rem;font-weight:400;letter-spacing:.03em;transition:color .3s;}
+nav a:hover,nav a.active{color:var(--gold-bright);}
+.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:9px 22px;border-radius:2px;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:all .35s;}
+.nav-cta:hover{background:var(--gold);color:var(--ink);}
+.header-right{display:flex;align-items:center;gap:12px;justify-self:end;}
+.lang-switch{display:flex;gap:6px;}
+.lang-btn{background:none;border:1px solid rgba(201,165,92,.35);color:var(--cream-dim);font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.1em;padding:4px 10px;border-radius:2px;cursor:pointer;transition:all .3s;}
+.lang-btn:hover{border-color:var(--gold);color:var(--gold);}
+.lang-btn.active{background:var(--gold);border-color:var(--gold);color:var(--ink);}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;}
+.burger span{width:26px;height:2px;background:var(--gold);transition:.3s;}
+
+.page-content{padding:140px 0 100px;}
+.page-content .wrap{max-width:780px;}
+.page-content h1{font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:2.5rem;}
+.page-content h1 em{font-style:italic;color:var(--gold);}
+
+.legal-block{margin-bottom:3rem;}
+.legal-block h2{font-size:1.4rem;color:var(--gold-bright);margin-bottom:.8rem;padding-bottom:.5rem;border-bottom:1px solid rgba(201,165,92,.2);}
+.legal-block p,.legal-block li{color:var(--cream-dim);margin-bottom:.6rem;font-size:.95rem;}
+.legal-block ul{padding-left:1.4rem;margin-bottom:.6rem;}
+.legal-block a{color:var(--gold);text-decoration:none;}
+.legal-block a:hover{text-decoration:underline;}
+
+footer{background:var(--charcoal);border-top:1px solid rgba(201,165,92,.15);padding:40px 0 28px;}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;margin-bottom:28px;flex-wrap:wrap;}
+.foot-brand .t{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--gold);}
+.foot-links{display:flex;gap:28px;flex-wrap:wrap;}
+.foot-links a{color:var(--cream-dim);text-decoration:none;font-size:.83rem;transition:color .3s;}
+.foot-links a:hover{color:var(--gold);}
+.foot-copy{font-size:.75rem;color:rgba(207,200,184,.45);text-align:center;}
+
+@media(max-width:768px){
+  header{grid-template-columns:1fr auto;padding:16px 20px;}
+  nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--green-darker);flex-direction:column;justify-content:center;align-items:center;gap:40px;z-index:99;}
+  nav.open{display:flex;}
+  .burger{display:flex;}
+  .wrap{padding:0 20px;}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <a href="wu-vita-website.html" class="brand">
+    <span class="brand-name">Wu-Vita</span>
+  </a>
+  <nav id="nav">
+    <a href="was-ist-wu-vita.html" data-i18n="nav_what">Was ist Wu-Vita?</a>
+    <a href="coach.html" data-i18n="nav_coach">Der Coach</a>
+    <a href="seminare.html" data-i18n="nav_seminars">Seminare &amp; Preise</a>
+    <a href="wu-vita-website.html#kontakt" class="nav-cta" data-i18n="nav_cta">Anfrage</a>
+  </nav>
+  <div class="header-right">
+    <div class="lang-switch">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Menü"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="page-content">
+  <div class="wrap">
+    <span class="eyebrow">Datenschutz</span>
+    <div class="gold-line"></div>
+    <h1>Datenschutz&shy;<em>erklärung</em></h1>
+
+    <div class="legal-block">
+      <h2>1. Verantwortlicher</h2>
+      <p>Dominik Frantzen<br>Robertstr. 18, 51105 Köln<br>
+        Telefon: <a href="tel:+4917625956058">0176 25956058</a><br>
+        E-Mail: <a href="mailto:traditionellestraining@gmail.com">traditionellestraining@gmail.com</a>
+      </p>
+    </div>
+
+    <div class="legal-block">
+      <h2>2. Allgemeines zur Datenverarbeitung</h2>
+      <p>Der Schutz deiner persönlichen Daten ist mir wichtig. Ich verarbeite personenbezogene Daten nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie meiner Inhalte und Leistungen erforderlich ist. Die Verarbeitung erfolgt auf Grundlage der DSGVO.</p>
+      <p>Diese Website verwendet <strong>keine Tracking-Tools</strong> (kein Google Analytics, kein Meta Pixel o.ä.) und setzt <strong>keine Cookies</strong>.</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>3. Kontaktformular</h2>
+      <p>Wenn du das Kontaktformular auf dieser Website nutzt, werden die von dir eingegebenen Daten (Name, E-Mail-Adresse, Nachricht) <strong>ausschließlich lokal in deinem Browser verarbeitet</strong> und über dein eigenes E-Mail-Programm (mailto-Link) versandt. Es erfolgt <strong>keine Speicherung der Daten auf einem Server</strong> durch diese Website.</p>
+      <p>Die von dir gesendete E-Mail wird von mir zur Beantwortung deiner Anfrage genutzt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung).</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>4. Lokaler Speicher (localStorage)</h2>
+      <p>Diese Website speichert deine Sprachpräferenz (Deutsch oder Englisch) im sogenannten <strong>localStorage</strong> deines Browsers. Hierbei handelt es sich um eine rein technische Einstellung, die ausschließlich auf deinem Gerät gespeichert wird und nicht an Server übermittelt wird. Du kannst diese Einstellung jederzeit über die Browsereinstellungen löschen.</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>5. Hosting & Serverprotokolle</h2>
+      <p>Diese Website wird bei einem externen Hosting-Anbieter gehostet. Beim Aufruf der Website werden durch den Hosting-Anbieter automatisch sogenannte Server-Log-Dateien erfasst, die Informationen wie IP-Adresse, Datum/Uhrzeit, Browsertyp und aufgerufene Seite enthalten können. Diese Daten werden nicht mit anderen Datenquellen zusammengeführt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am sicheren Betrieb der Website).</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>6. Google Fonts</h2>
+      <p>Diese Website lädt Schriftarten von Google Fonts (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Beim Laden der Seite stellt dein Browser eine Verbindung zu den Servern von Google her, wobei deine IP-Adresse übertragen werden kann. Die Nutzung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>7. Deine Rechte</h2>
+      <p>Du hast nach der DSGVO folgende Rechte gegenüber mir als Verantwortlichem:</p>
+      <ul>
+        <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
+        <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
+        <li>Recht auf Löschung (Art. 17 DSGVO)</li>
+        <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+        <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
+        <li>Widerspruchsrecht (Art. 21 DSGVO)</li>
+      </ul>
+      <p>Zur Ausübung deiner Rechte wende dich an: <a href="mailto:traditionellestraining@gmail.com">traditionellestraining@gmail.com</a></p>
+      <p>Außerdem hast du das Recht, dich bei einer Datenschutzaufsichtsbehörde zu beschweren. Die zuständige Behörde für Nordrhein-Westfalen ist die <strong>Landesbeauftragte für Datenschutz und Informationsfreiheit NRW</strong> (<a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">ldi.nrw.de</a>).</p>
+    </div>
+
+    <div class="legal-block">
+      <h2>8. Aktualität</h2>
+      <p>Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Oktober 2026.</p>
+    </div>
+
+    <p style="margin-top:2rem;font-size:.85rem;color:rgba(207,200,184,.5);">
+      <a href="impressum.html" style="color:var(--gold);">→ Zum Impressum</a>
+    </p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand"><span class="t">Wu-Vita</span></div>
+      <div class="foot-links">
+        <a href="was-ist-wu-vita.html" data-i18n="nav_what">Was ist Wu-Vita?</a>
+        <a href="coach.html" data-i18n="nav_coach">Der Coach</a>
+        <a href="seminare.html" data-i18n="nav_seminars">Seminare &amp; Preise</a>
+        <a href="wu-vita-website.html#kontakt" data-i18n="foot_kontakt">Kontakt</a>
+        <a href="impressum.html" data-i18n="foot_imp">Impressum</a>
+        <a href="datenschutz.html" data-i18n="foot_dsg">Datenschutz</a>
+      </div>
+    </div>
+    <div class="foot-copy" data-i18n="foot_copy">© 2026 Wu-Vita · Dominik Frantzen · Ganzheitliches Coaching — Vergangenheit trifft Gegenwart</div>
+  </div>
+</footer>
+
+<script>
+const t={
+  de:{
+    nav_what:"Was ist Wu-Vita?",nav_coach:"Der Coach",nav_seminars:"Seminare &amp; Preise",nav_cta:"Anfrage",foot_kontakt:"Kontakt",
+    foot_imp:"Impressum",foot_dsg:"Datenschutz",
+    foot_copy:"© 2026 Wu-Vita · Dominik Frantzen · Ganzheitliches Coaching — Vergangenheit trifft Gegenwart"
+  },
+  en:{
+    nav_what:"What is Wu-Vita?",nav_coach:"The Coach",nav_seminars:"Seminars &amp; Prices",nav_cta:"Enquire",foot_kontakt:"Contact",
+    foot_imp:"Legal notice",foot_dsg:"Privacy policy",
+    foot_copy:"© 2026 Wu-Vita · Dominik Frantzen · Holistic Coaching — Past meets Present"
+  }
+};
+function setLang(lang){
+  const tr=t[lang];
+  for(const k in tr){document.querySelectorAll('[data-i18n="'+k+'"]').forEach(el=>{el.innerHTML=tr[k];});}
+  document.getElementById("btn-de").classList.toggle("active",lang==="de");
+  document.getElementById("btn-en").classList.toggle("active",lang==="en");
+  document.documentElement.lang=lang;
+  localStorage.setItem("wuvita-lang",lang);
+}
+const savedLang=localStorage.getItem("wuvita-lang")||"de";
+if(savedLang!=="de")setLang(savedLang);
+const hdr=document.getElementById("hdr");
+window.addEventListener("scroll",()=>hdr.classList.toggle("scrolled",window.scrollY>40));
+const burger=document.getElementById("burger"),nav=document.getElementById("nav");
+burger.addEventListener("click",()=>nav.classList.toggle("open"));
+nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
+</script>
+</body>
+</html>
