@@ -10,6 +10,7 @@
 | `seminare.html` | Seminare & Preise: Online-Kurse, Coaching-Pakete, Einzelbuchungen, Live-Seminar |
 | `impressum.html` | Impressum nach § 5 TMG |
 | `datenschutz.html` | Datenschutzerklärung nach DSGVO |
+| `blog.html` | Blog-Übersichtsseite (3 Kategorien, aktuell „Artikel in Vorbereitung") |
 
 ---
 
@@ -38,6 +39,7 @@
 - [x] Assessment-Text: Kraft, Beweglichkeit, Herz-Kreislauf, Belastbarkeit
 - [x] Zielgruppen: Wettkämpfer, Athleten, Langlebigkeit
 - [x] Kontaktformular: mailto an `traditionellestraining@gmail.com`, Felder vorausgefüllt
+- [x] FAQ-Sektion auf der Landing Page (vor dem Kontaktformular, nach den Zielgruppen): 4 Fragen als Akkordeon (aufklappbar), inkl. FAQPage-Schema (JSON-LD) fürs SEO, DE/EN übersetzt
 - [x] Footer: Impressum & Datenschutz verlinkt
 
 ### Coach-Seite (`coach.html`)
@@ -82,7 +84,9 @@
 - [ ] Weitere eigene Fotos einpflegen (restliche Platzhalter auf anderen Seiten ersetzen)
 
 ### Technik
-- [ ] Newsletter-Anmeldung (Seminare-Seite) an Dienst anschließen (z.B. Mailchimp)
+- [x] Newsletter-Anmeldung entfernt (Seminare-Seite) – wird durch Blog ersetzt
+- [x] Blog-Grundgerüst: `blog.html` (Übersicht, 3 Kategorien: Training/Ernährung/Kampfkunst & Qigong) + „Blog"-Reiter in Header & Footer auf allen Seiten ergänzt (DE/EN)
+- [ ] Erste echte Blogartikel schreiben (z.B. mit der `wu-vita-blog-voice`-Skill) und als eigene HTML-Seiten verlinken
 - [ ] Impressum: Steuernummer/USt-IdNr. nachtragen sobald Gewerbe angemeldet
 
 ### Launch

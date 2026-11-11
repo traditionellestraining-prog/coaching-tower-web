@@ -267,6 +267,25 @@ section{position:relative;}
 .field textarea{resize:vertical;min-height:120px;}
 .contact-form .btn-primary{width:100%;text-align:center;border:0;cursor:pointer;margin-top:8px;}
 
+/* faq */
+.faq{background:var(--charcoal);text-align:center;}
+.faq h2{font-size:clamp(2.2rem,5vw,3.2rem);margin-bottom:0;}
+.faq h2 em{font-style:italic;color:var(--gold-bright);}
+.faq-list{max-width:760px;margin:50px auto 0;text-align:left;}
+.faq-item{border-bottom:1px solid rgba(201,165,92,.18);}
+.faq-item summary{
+  list-style:none;cursor:pointer;padding:22px 4px;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+  font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--cream);
+  user-select:none;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-toggle{flex-shrink:0;font-size:1.3rem;color:var(--gold);transition:transform .3s;}
+.faq-item[open] .faq-toggle{transform:rotate(45deg);}
+.faq-item[open] summary{color:var(--gold-bright);}
+.faq-answer{padding:0 4px 24px 20px;border-left:2px solid var(--gold);margin:0 4px 20px;}
+.faq-answer p{color:var(--cream-dim);font-size:.95rem;line-height:1.8;}
+
 /* footer */
 footer{background:var(--ink);padding:54px 0 34px;border-top:1px solid rgba(201,165,92,.15);}
 .foot-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
@@ -307,6 +326,7 @@ footer{background:var(--ink);padding:54px 0 34px;border-top:1px solid rgba(201,1
     <a href="was-ist-wu-vita.html" data-i18n="nav_what">Was ist Wu-Vita?</a>
     <a href="coach.html" data-i18n="nav_coach">Der Coach</a>
     <a href="seminare.html" data-i18n="nav_seminars">Seminare &amp; Preise</a>
+    <a href="blog.html" data-i18n="nav_blog">Blog</a>
     <a href="#kontakt" class="nav-cta" data-i18n="nav_cta">Anfrage</a>
   </nav>
   <div class="header-right">
@@ -529,6 +549,75 @@ footer{background:var(--ink);padding:54px 0 34px;border-top:1px solid rgba(201,1
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq sec-pad" id="faq">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <span class="eyebrow" data-i18n="faq_eyebrow">Fragen &amp; Antworten</span>
+      <h2 data-i18n="faq_h2">Häufig gestellte <em>Fragen</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary><span data-i18n="faq_q1">„Brauche ich Vorerfahrung in Kampfkunst oder Qigong?”</span><span class="faq-toggle">+</span></summary>
+        <div class="faq-answer"><p data-i18n="faq_a1">Nein, überhaupt nicht. Das System holt dich genau dort ab, wo du stehst. Traditionelle Elemente dienen uns als biomechanische Werkzeuge für mehr Struktur und Mobilität – egal ob Anfänger oder Fortgeschrittener.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span data-i18n="faq_q2">„Wie genau läuft das Remote-Coaching ab?”</span><span class="faq-toggle">+</span></summary>
+        <div class="faq-answer"><p data-i18n="faq_a2">Über unsere digitale Plattform erhältst du deine Trainingspläne, Mobilitätsroutinen und Video-Anleitungen. Du schickst uns regelmäßig Trainingsvideos für dein Feedback und bekommst präzise Korrekturen für deine Ausführung.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span data-i18n="faq_q3">„Ist Wu-Vita ein klassisches Fitnessstudio oder reines Krafttraining?”</span><span class="faq-toggle">+</span></summary>
+        <div class="faq-answer"><p data-i18n="faq_a3">Nein, es gibt kein physisches Wu-Vita-Gym. Fundiertes Krafttraining – im Studio oder zu Hause – ist zwar ein wichtiger Baustein, wird bei uns aber durch traditionelle Bewegungssysteme, neurale Regulation und Ernährung zu einem ganzheitlichen Konzept ergänzt.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span data-i18n="faq_q4">„Kann ich auch mit körperlichen Einschränkungen teilnehmen?”</span><span class="faq-toggle">+</span></summary>
+        <div class="faq-answer"><p data-i18n="faq_a4">Prinzipiell ja, da wir die Pläne individuell anpassen. Akute Beschwerden müssen vorab jedoch ärztlich oder physiotherapeutisch abgeklärt sein – Wu-Vita ist ein reines Trainingssystem und ersetzt keine medizinische Therapie.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Brauche ich Vorerfahrung in Kampfkunst oder Qigong?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein, überhaupt nicht. Das System holt dich genau dort ab, wo du stehst. Traditionelle Elemente dienen uns als biomechanische Werkzeuge für mehr Struktur und Mobilität – egal ob Anfänger oder Fortgeschrittener."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie genau läuft das Remote-Coaching ab?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Über unsere digitale Plattform erhältst du deine Trainingspläne, Mobilitätsroutinen und Video-Anleitungen. Du schickst uns regelmäßig Trainingsvideos für dein Feedback und bekommst präzise Korrekturen für deine Ausführung."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ist Wu-Vita ein klassisches Fitnessstudio oder reines Krafttraining?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein, es gibt kein physisches Wu-Vita-Gym. Fundiertes Krafttraining – im Studio oder zu Hause – ist zwar ein wichtiger Baustein, wird bei uns aber durch traditionelle Bewegungssysteme, neurale Regulation und Ernährung zu einem ganzheitlichen Konzept ergänzt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann ich auch mit körperlichen Einschränkungen teilnehmen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Prinzipiell ja, da wir die Pläne individuell anpassen. Akute Beschwerden müssen vorab jedoch ärztlich oder physiotherapeutisch abgeklärt sein – Wu-Vita ist ein reines Trainingssystem und ersetzt keine medizinische Therapie."
+      }
+    }
+  ]
+}
+</script>
+
 <!-- KONTAKT -->
 <section class="contact" id="kontakt">
   <div class="wrap">
@@ -557,6 +646,7 @@ footer{background:var(--ink);padding:54px 0 34px;border-top:1px solid rgba(201,1
         <a href="was-ist-wu-vita.html" data-i18n="nav_what">Was ist Wu-Vita?</a>
         <a href="coach.html" data-i18n="nav_coach">Der Coach</a>
         <a href="seminare.html" data-i18n="nav_seminars">Seminare &amp; Preise</a>
+        <a href="blog.html" data-i18n="nav_blog">Blog</a>
         <a href="#kontakt" data-i18n="foot_kontakt">Kontakt</a>
         <a href="impressum.html" data-i18n="foot_imp">Impressum</a>
         <a href="datenschutz.html" data-i18n="foot_dsg">Datenschutz</a>
@@ -569,7 +659,7 @@ footer{background:var(--ink);padding:54px 0 34px;border-top:1px solid rgba(201,1
 <script>
 const t={
   de:{
-    nav_what:"Was ist Wu-Vita?",nav_coach:"Der Coach",nav_seminars:"Seminare &amp; Preise",nav_cta:"Anfrage",foot_kontakt:"Kontakt",foot_imp:"Impressum",foot_dsg:"Datenschutz",
+    nav_what:"Was ist Wu-Vita?",nav_coach:"Der Coach",nav_seminars:"Seminare &amp; Preise",nav_blog:"Blog",nav_cta:"Anfrage",foot_kontakt:"Kontakt",foot_imp:"Impressum",foot_dsg:"Datenschutz",
     hero_eyebrow:"Ganzheitliches Coaching · Köln",
     hero_h1:"Dein Körper ist<br>kein Baukasten.<br><em>Er ist eine Einheit.</em>",
     hero_lead:"Wu-Vita ist die Fusion aus jahrtausendealter Kampfkunst und moderner, evidenzbasierter Trainingswissenschaft.",
@@ -586,6 +676,15 @@ const t={
     contact_p:"Erzähl mir kurz von deinem Ziel. Im kostenlosen Erstgespräch finden wir heraus, ob wir zueinander passen.",
     form_name:"Dein Name",form_name_ph:"Max Mustermann",form_email:"E-Mail",form_goal:"Dein Ziel",
     form_goal_ph:"Woran möchtest du arbeiten? (z.B. Kraft, Schmerzfreiheit, Wettkampf…)",form_submit:"Anfrage senden",
+    faq_eyebrow:"Fragen &amp; Antworten",faq_h2:"Häufig gestellte <em>Fragen</em>",
+    faq_q1:"&bdquo;Brauche ich Vorerfahrung in Kampfkunst oder Qigong?&rdquo;",
+    faq_a1:"Nein, überhaupt nicht. Das System holt dich genau dort ab, wo du stehst. Traditionelle Elemente dienen uns als biomechanische Werkzeuge für mehr Struktur und Mobilität – egal ob Anfänger oder Fortgeschrittener.",
+    faq_q2:"&bdquo;Wie genau läuft das Remote-Coaching ab?&rdquo;",
+    faq_a2:"Über unsere digitale Plattform erhältst du deine Trainingspläne, Mobilitätsroutinen und Video-Anleitungen. Du schickst uns regelmäßig Trainingsvideos für dein Feedback und bekommst präzise Korrekturen für deine Ausführung.",
+    faq_q3:"&bdquo;Ist Wu-Vita ein klassisches Fitnessstudio oder reines Krafttraining?&rdquo;",
+    faq_a3:"Nein, es gibt kein physisches Wu-Vita-Gym. Fundiertes Krafttraining – im Studio oder zu Hause – ist zwar ein wichtiger Baustein, wird bei uns aber durch traditionelle Bewegungssysteme, neurale Regulation und Ernährung zu einem ganzheitlichen Konzept ergänzt.",
+    faq_q4:"&bdquo;Kann ich auch mit körperlichen Einschränkungen teilnehmen?&rdquo;",
+    faq_a4:"Prinzipiell ja, da wir die Pläne individuell anpassen. Akute Beschwerden müssen vorab jedoch ärztlich oder physiotherapeutisch abgeklärt sein – Wu-Vita ist ein reines Trainingssystem und ersetzt keine medizinische Therapie.",
     foot_copy:"© 2026 Wu-Vita · Dominik Frantzen · Ganzheitliches Coaching — Vergangenheit trifft Gegenwart",
     fusion_wu:"武 Wu — Der bewusste Weg",
     fusion_vita:"Vita — Die pulsierende Lebenskraft",
@@ -625,7 +724,7 @@ const t={
     foot_kontakt:"Kontakt"
   },
   en:{
-    nav_what:"What is Wu-Vita?",nav_coach:"The Coach",nav_seminars:"Seminars &amp; Prices",nav_cta:"Enquire",foot_kontakt:"Contact",foot_imp:"Legal notice",foot_dsg:"Privacy policy",
+    nav_what:"What is Wu-Vita?",nav_coach:"The Coach",nav_seminars:"Seminars &amp; Prices",nav_blog:"Blog",nav_cta:"Enquire",foot_kontakt:"Contact",foot_imp:"Legal notice",foot_dsg:"Privacy policy",
     hero_eyebrow:"Holistic Coaching · Cologne",
     hero_h1:"Your body is not<br>a set of parts.<br><em>It is one unit.</em>",
     hero_lead:"Wu-Vita is the fusion of millennia-old martial arts and modern, evidence-based sports science.",
@@ -642,6 +741,15 @@ const t={
     contact_p:"Tell me briefly about your goal. In a free initial consultation we find out if we are a good fit.",
     form_name:"Your name",form_name_ph:"John Smith",form_email:"E-Mail",form_goal:"Your goal",
     form_goal_ph:"What would you like to work on? (e.g. strength, pain relief, competition…)",form_submit:"Send enquiry",
+    faq_eyebrow:"Questions &amp; Answers",faq_h2:"Frequently Asked <em>Questions</em>",
+    faq_q1:"&ldquo;Do I need prior experience in martial arts or Qigong?&rdquo;",
+    faq_a1:"No, not at all. The system meets you exactly where you are. Traditional elements serve as biomechanical tools for more structure and mobility – whether you're a beginner or advanced.",
+    faq_q2:"&ldquo;How exactly does the remote coaching work?&rdquo;",
+    faq_a2:"Through our digital platform you receive your training plans, mobility routines and video guides. You regularly send us training videos for feedback and get precise corrections on your execution.",
+    faq_q3:"&ldquo;Is Wu-Vita a classic gym or purely strength training?&rdquo;",
+    faq_a3:"No, there is no physical Wu-Vita gym. Solid strength training – in the gym or at home – is an important building block, but with us it's complemented by traditional movement systems, neural regulation and nutrition into one holistic concept.",
+    faq_q4:"&ldquo;Can I take part if I have physical limitations?&rdquo;",
+    faq_a4:"In principle yes, since we adapt the plans individually. Acute conditions must first be cleared medically or by a physiotherapist – Wu-Vita is purely a training system and does not replace medical therapy.",
     philo_quote:"\"Some offer you off-the-shelf bodybuilding, others only martial arts. But your body does not function in <span class='hl'>isolated compartments</span>.\"",
     philo_p1:"You may know the feeling: you look for a trainer and always find the same offers. Muscles are seen – but not the <strong>structure</strong>, not the <strong>psyche</strong>, not the <strong>nervous system</strong>.",
     philo_p2:"Wu-Vita unites the traditional Chinese principle of the conscious path and martial art (<strong>Wu</strong>) with the pulsating life force (<strong>Vita</strong>) – a symbiosis of millennia-old tradition and modern science.",

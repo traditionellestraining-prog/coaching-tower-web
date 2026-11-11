@@ -204,31 +204,6 @@ nav a:hover,nav a.active{color:var(--gold-bright);}
 .btn-submit:hover{background:var(--gold-bright);transform:translateY(-1px);}
 .form-note{font-size:.75rem;color:rgba(207,200,184,.5);text-align:center;padding:0 24px 8px;}
 
-/* ── NEWSLETTER SECTION ──────────────────────────────── */
-.newsletter{
-  padding:70px 0 90px;
-  border-top:1px solid rgba(201,165,92,.12);
-  text-align:center;
-}
-.newsletter h2{font-size:2rem;color:var(--cream);}
-.newsletter h2 em{color:var(--gold);font-style:italic;}
-.newsletter p{color:var(--cream-dim);margin:.8rem auto 2rem;max-width:480px;font-size:.93rem;}
-.notify-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-.notify-form input{
-  background:rgba(255,255,255,.05);border:1px solid rgba(201,165,92,.3);
-  color:var(--cream);font-family:'Inter',sans-serif;font-size:.88rem;
-  padding:12px 18px;border-radius:2px;outline:none;min-width:280px;
-  transition:border-color .3s;
-}
-.notify-form input:focus{border-color:var(--gold);}
-.notify-form button{
-  background:var(--gold);color:var(--ink);border:none;
-  font-family:'Inter',sans-serif;font-size:.8rem;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  padding:12px 28px;border-radius:2px;cursor:pointer;transition:background .3s;
-}
-.notify-form button:hover{background:var(--gold-bright);}
-
 /* ── FOOTER ──────────────────────────────────────────── */
 footer{background:var(--green-darker);border-top:1px solid rgba(201,165,92,.12);padding:48px 0 32px;}
 .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap;margin-bottom:32px;}
@@ -261,6 +236,7 @@ footer{background:var(--green-darker);border-top:1px solid rgba(201,165,92,.12);
     <a href="was-ist-wu-vita.html" data-i18n="nav_what">Was ist Wu-Vita?</a>
     <a href="coach.html" data-i18n="nav_coach">Der Coach</a>
     <a href="seminare.html" class="active" data-i18n="nav_seminars">Seminare &amp; Preise</a>
+    <a href="blog.html" data-i18n="nav_blog">Blog</a>
     <a href="wu-vita-website.html#kontakt" class="nav-cta" data-i18n="nav_cta">Anfrage</a>
   </nav>
   <div class="header-right">
@@ -630,20 +606,6 @@ footer{background:var(--green-darker);border-top:1px solid rgba(201,165,92,.12);
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section class="newsletter reveal">
-  <div class="wrap">
-    <span class="eyebrow" data-i18n="notify_eyebrow">Immer up to date</span>
-    <div class="gold-line"></div>
-    <h2><span data-i18n="notify_h2">Neue Termine &amp;</span> <em data-i18n="notify_h2em">Events</em></h2>
-    <p data-i18n="notify_p">Trag dich ein und erfahre als Erster von neuen Seminarterminen, exklusiven Events und Frühbucherrabatten.</p>
-    <div class="notify-form">
-      <input type="email" data-i18n-placeholder="notify_ph" placeholder="deine@email.de">
-      <button data-i18n="notify_btn">Benachrichtigen</button>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="wrap">
     <div class="foot-grid">
@@ -652,6 +614,7 @@ footer{background:var(--green-darker);border-top:1px solid rgba(201,165,92,.12);
         <a href="was-ist-wu-vita.html" data-i18n="nav_what">Was ist Wu-Vita?</a>
         <a href="coach.html" data-i18n="nav_coach">Der Coach</a>
         <a href="seminare.html" data-i18n="nav_seminars">Seminare &amp; Preise</a>
+        <a href="blog.html" data-i18n="nav_blog">Blog</a>
         <a href="wu-vita-website.html#kontakt" data-i18n="foot_kontakt">Kontakt</a>
         <a href="impressum.html" data-i18n="foot_imp">Impressum</a>
         <a href="datenschutz.html" data-i18n="foot_dsg">Datenschutz</a>
@@ -665,7 +628,7 @@ footer{background:var(--green-darker);border-top:1px solid rgba(201,165,92,.12);
 /* ── i18n ─────────────────────────────────────────────── */
 const t={
   de:{
-    nav_what:"Was ist Wu-Vita?",nav_coach:"Der Coach",nav_seminars:"Seminare &amp; Preise",nav_cta:"Anfrage",foot_kontakt:"Kontakt",
+    nav_what:"Was ist Wu-Vita?",nav_coach:"Der Coach",nav_seminars:"Seminare &amp; Preise",nav_blog:"Blog",nav_cta:"Anfrage",foot_kontakt:"Kontakt",
     hero_eyebrow:"Online · Live · Köln",
     hero_h1:"Seminare &amp;",hero_h1em:"Preise",
     hero_lead:"Wähle deinen Weg – Online-Kurse für den Einstieg oder Live-Seminare für die Tiefe.",
@@ -692,9 +655,6 @@ const t={
     form_ok:"Danke! Ich melde mich so schnell wie möglich.",
     form_note:"Kein Spam. Nur direkte Antworten von Dominik.",
 
-    notify_eyebrow:"Immer up to date",notify_h2:"Neue Termine &amp;",notify_h2em:"Events",
-    notify_p:"Trag dich ein und erfahre als Erster von neuen Seminarterminen, exklusiven Events und Frühbucherrabatten.",
-    notify_ph:"deine@email.de",notify_btn:"Benachrichtigen",
     foot_copy:"© 2026 Wu-Vita · Dominik Frantzen · Ganzheitliches Coaching — Vergangenheit trifft Gegenwart",
     cp_eyebrow:"Persönliches Coaching",cp_h2:"Coaching <em>Preise</em>",cp_sub:"Individuell. Persönlich. Ohne Kompromisse.",
     cp_cta:"Anfrage stellen",
@@ -720,7 +680,7 @@ const t={
     eb4_tag:"Gesundheit",eb4_title:"Blutbildanalyse",eb4_desc:"Gemeinsame Auswertung deines Blutbilds – ich erkläre die Werte verständlich, erkenne Muster und leite daraus konkrete Empfehlungen für Training, Ernährung und Regeneration ab.",eb4_price:"<strong>50 €</strong>",eb4_dur:"60 Min.",eb4_loc:"Online oder Live · Köln"
   },
   en:{
-    nav_what:"What is Wu-Vita?",nav_coach:"The Coach",nav_seminars:"Seminars &amp; Prices",nav_cta:"Enquire",foot_kontakt:"Contact",
+    nav_what:"What is Wu-Vita?",nav_coach:"The Coach",nav_seminars:"Seminars &amp; Prices",nav_blog:"Blog",nav_cta:"Enquire",foot_kontakt:"Contact",
     hero_eyebrow:"Online · Live · Cologne",
     hero_h1:"Seminars &amp;",hero_h1em:"Prices",
     hero_lead:"Choose your path – online courses to start or live seminars to go deeper.",
@@ -747,9 +707,6 @@ const t={
     form_ok:"Thank you! I will get back to you as soon as possible.",
     form_note:"No spam. Only direct replies from Dominik.",
 
-    notify_eyebrow:"Stay up to date",notify_h2:"New dates &amp;",notify_h2em:"Events",
-    notify_p:"Sign up and be the first to hear about new seminar dates, exclusive events and early-bird discounts.",
-    notify_ph:"your@email.com",notify_btn:"Notify me",
     foot_copy:"© 2026 Wu-Vita · Dominik Frantzen · Holistic Coaching — Past meets Present",
     cp_eyebrow:"Personal Coaching",cp_h2:"Coaching <em>Prices</em>",cp_sub:"Individual. Personal. No compromises.",
     cp_cta:"Send enquiry",
