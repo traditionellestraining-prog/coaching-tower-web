@@ -25,7 +25,7 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1
 header{position:fixed;top:0;left:0;right:0;z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 40px;transition:background .4s,padding .4s;}
 header.scrolled{background:rgba(20,34,25,.92);backdrop-filter:blur(14px);padding:12px 40px;border-bottom:1px solid rgba(201,165,92,.15);}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;justify-self:start;}
-.brand-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--gold);letter-spacing:.02em;}
+.brand img{height:72px;width:auto;display:block;}
 nav{display:flex;gap:34px;align-items:center;justify-self:center;}
 nav a{color:var(--cream-dim);text-decoration:none;font-size:.86rem;font-weight:400;letter-spacing:.03em;transition:color .3s;}
 nav a:hover,nav a.active{color:var(--gold-bright);}
@@ -72,7 +72,7 @@ footer{background:var(--charcoal);border-top:1px solid rgba(201,165,92,.15);padd
 
 <header id="hdr">
   <a href="wu-vita-website.html" class="brand">
-    <span class="brand-name">Wu-Vita</span>
+    <img src="wu-vita-logo.png" alt="Wu-Vita – by Dominik Frantzen">
   </a>
   <nav id="nav">
     <a href="was-ist-wu-vita.html" data-i18n="nav_what">Was ist Wu-Vita?</a>

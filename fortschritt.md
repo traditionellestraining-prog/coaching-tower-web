@@ -25,6 +25,8 @@
 ### Branding
 - [x] Logo/Brand-Name „Wu-Vita" im Goldton der Marke
 - [x] Einheitliches Farbschema (Dunkelgrün, Gold, Creme) auf allen Seiten
+- [x] Echtes Logo-Bild (`wu-vita-logo.png`, zugeschnitten aus der Vorlage) ersetzt den Text-/Platzhalter-Schriftzug oben links im Header auf allen 7 Seiten
+- [x] Schwarzer Hintergrund im Logo entfernt: transparent + Text in Marken-Gold eingefärbt, passt sich jedem Seitenhintergrund an
 
 ### Sprache (DE / EN)
 - [x] Sprachumschalter auf allen Seiten, Auswahl im localStorage gespeichert
